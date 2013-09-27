@@ -8,5 +8,6 @@
     <name>parent</name>
     <modules>
         <module>application</module>
+    <module>gui</module>
   </modules>
 </project>
