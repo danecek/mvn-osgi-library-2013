@@ -2,17 +2,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>library-parent</artifactId>
-        <groupId>org.lib</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
+    <artifactId>library-parent</artifactId>
+    <groupId>org.lib</groupId>
+    <version>1.0-SNAPSHOTx</version>
+  </parent>
 
     <groupId>org.lib</groupId>
-    <artifactId>application</artifactId>
+    <artifactId>utils</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>bundle</packaging>
 
-    <name>application OSGi Bundle</name>
+    <name>utils OSGi Bundle</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -25,11 +25,6 @@
             <version>4.3.0</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>utils</artifactId>
-            <version>${project.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -41,8 +36,9 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Bundle-Activator>org.lib.application.Activator</Bundle-Activator>
-                        <Export-Package />
+                        <Bundle-Activator>org.lib.utils.Activator</Bundle-Activator>
+                        <Export-Package >org.lib.utils</Export-Package>
+                        <Private-Package>org.lib.utils.*</Private-Package>
                     </instructions>
                 </configuration>
             </plugin>

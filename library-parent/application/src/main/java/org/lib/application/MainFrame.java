@@ -1,0 +1,44 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package org.lib.application;
+
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import org.lib.utils.Messages;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.BundleException;
+import org.osgi.framework.launch.Framework;
+
+/**
+ *
+ * @author danecek
+ */
+public class MainFrame extends JFrame {
+
+    public MainFrame(final BundleContext context) {
+        super(Messages.Library.eval());
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent we) {
+                Bundle b = context.getBundle(0);
+                Framework f = (Framework) b;
+                try {
+                    f.stop();
+                    f.waitForStop(0);
+                } catch (BundleException | InterruptedException ex) {
+                    Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+
+        setBounds(300, 300, 800, 600);
+        setVisible(true);
+
+    }
+}

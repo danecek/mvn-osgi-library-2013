@@ -8,5 +8,7 @@
     <name>library-parent</name>
     <modules>
     <module>application</module>
+    <module>utils</module>
+    <module>model</module>
   </modules>
 </project>
