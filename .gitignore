@@ -4,3 +4,6 @@
 *.jar
 *.war
 *.ear
+/library-parent/application/target/
+/library-parent/utils/target/
+/library-parent/model/target/
