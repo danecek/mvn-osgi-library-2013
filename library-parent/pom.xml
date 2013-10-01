@@ -7,6 +7,6 @@
     <packaging>pom</packaging>
     <name>library-parent</name>
     <modules>
-        <module>application</module>
-    </modules>
+    <module>application</module>
+  </modules>
 </project>
