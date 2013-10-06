@@ -17,11 +17,25 @@ public abstract class AbstrId<T extends AbstrId<T>> implements Comparable<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public boolean equals(Object o) {
-        return super.equals(o); //To change body of generated methods, choose Tools | Templates.
+        if (o == null) {
+            return false;
+        }
+        if (o.getClass() != getClass()) {
+            return false;
+        }
+
+        return compareTo((T) o) == 0;
+
     }
-    
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 67 * hash + this.id;
+        return hash;
+    }
 
     public int compareTo(T t) {
         return t.getId() - id;
