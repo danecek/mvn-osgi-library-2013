@@ -22,22 +22,23 @@ import org.osgi.framework.launch.Framework;
 public class MainFrame extends JFrame {
 
     public MainFrame(final BundleContext context) {
-        super(Messages.Library.eval());
+        super(Messages.Main_Frame.cm());
+
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent we) {
-                Bundle b = context.getBundle(0);
-                Framework f = (Framework) b;
                 try {
-                    f.stop();
-                    f.waitForStop(0);
+                    Bundle bnd = context.getBundle(0);
+                    Framework fw = (Framework) bnd;
+                    fw.stop();
+                    fw.waitForStop(0);
                 } catch (BundleException | InterruptedException ex) {
-                    Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MainFrame.class.getName()).log(Level.INFO, null, ex);
                 }
             }
         });
 
-        setBounds(300, 300, 800, 600);
+        setBounds(300, 300, 800, 400);
         setVisible(true);
 
     }

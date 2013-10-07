@@ -8,9 +8,9 @@ package org.lib.model;
  *
  * @author danecek
  */
-public abstract class AbstrId<T extends AbstrId<T>> implements Comparable<T> {
+public class AbstrId<T extends AbstrId<T>> implements Comparable<T> {
 
-    private int id;
+    private final int id;
 
     public AbstrId(int id) {
         this.id = id;
@@ -18,13 +18,24 @@ public abstract class AbstrId<T extends AbstrId<T>> implements Comparable<T> {
 
     @Override
     public boolean equals(Object o) {
-        return super.equals(o); //To change body of generated methods, choose Tools | Templates.
+        if (o == null) {
+            return false;
+        }
+        if (getClass() != o.getClass()) {
+            return false;
+        }
+        return compareTo((T) o) == 0;
     }
-    
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 53 * hash + this.id;
+        return hash;
+    }
 
     public int compareTo(T t) {
-        return t.getId() - id;
+        return id - t.getId();
     }
 
     /**
@@ -32,5 +43,10 @@ public abstract class AbstrId<T extends AbstrId<T>> implements Comparable<T> {
      */
     public int getId() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return Integer.toString(id);
     }
 }

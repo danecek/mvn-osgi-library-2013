@@ -16,14 +16,15 @@ import java.util.logging.Logger;
  */
 public enum Messages {
 
-    Library;
+    Main_Frame;
 
-    public String eval(Object... args) {
-        ResourceBundle b = ResourceBundle.getBundle("org.lib.utils.messages");
+    public String cm(Object ... args) {
+        ResourceBundle bnd = ResourceBundle.getBundle("org.lib.utils.messages");
         try {
-            return MessageFormat.format(b.getString(name()), args);
+            String tmpl = bnd.getString(name());
+            return MessageFormat.format(tmpl, args);
         } catch (MissingResourceException | IllegalArgumentException ex) {
-            Logger.getLogger(getClass().getName()).log(Level.WARNING, ex.toString());
+            Logger.getLogger(getClass().getName()).log(Level.WARNING, "", ex);
             return name().replace('_', ' ');
         }
     }
