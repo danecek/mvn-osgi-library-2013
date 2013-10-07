@@ -17,6 +17,7 @@ public class AbstrId<T extends AbstrId<T>> implements Comparable<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public boolean equals(Object o) {
         if (o == null) {
             return false;
