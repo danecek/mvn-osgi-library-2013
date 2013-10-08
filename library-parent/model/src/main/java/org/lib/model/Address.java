@@ -9,7 +9,7 @@ package org.lib.model;
  * @author danecek
  */
 public class Address {
-    
+
     String address;
 
     public Address(String address) {
