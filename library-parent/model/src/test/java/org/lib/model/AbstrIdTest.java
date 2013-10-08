@@ -4,10 +4,6 @@
  */
 package org.lib.model;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -20,31 +16,10 @@ public class AbstrIdTest {
     public AbstrIdTest() {
     }
 
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-
-    /**
-     * Test of equals method, of class AbstrId.
-     */
     @Test
     public void testEquals() {
         ReaderId ri = new ReaderId(100);
-
         ReaderId ri2 = new ReaderId(100);
-        
         assertTrue(ri2.equals(ri));
 
     }
@@ -55,9 +30,9 @@ public class AbstrIdTest {
     @Test
     public void testCompareTo() {
         System.out.println("compareTo");
-
-
-
+        ReaderId ri = new ReaderId(100);
+        ReaderId ri2 = new ReaderId(200);
+        assertTrue(ri.compareTo(ri2) < 0) ;
     }
 
     /**
@@ -66,15 +41,15 @@ public class AbstrIdTest {
     @Test
     public void testGetId() {
         System.out.println("getId");
-
-
-
     }
 
-    public class AbstrIdImpl extends AbstrId {
+    @Test
+    public void testHashCode() {
+        System.out.println("hashCode");
+    }
 
-        public AbstrIdImpl() {
-            super(0);
-        }
+    @Test
+    public void testToString() {
+        System.out.println("toString");
     }
 }
