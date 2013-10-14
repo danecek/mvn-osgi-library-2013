@@ -4,7 +4,6 @@
  */
 package org.lib.integration;
 
-
 import java.util.Collection;
 import org.lib.model.Address;
 import org.lib.model.Reader;
@@ -16,14 +15,11 @@ import org.lib.utils.LibraryException;
  * @author danecek
  */
 public interface ReaderDAO {
-
+    
     void create(String name, Address address) throws LibraryException;
-
     void delete(ReaderId id) throws LibraryException;
-
-    void update(Reader r) throws LibraryException;
-
+    void update(Reader reader) throws LibraryException;
     Reader find(ReaderId id) throws LibraryException;
-
     Collection<Reader> getAll() throws LibraryException;
+    
 }

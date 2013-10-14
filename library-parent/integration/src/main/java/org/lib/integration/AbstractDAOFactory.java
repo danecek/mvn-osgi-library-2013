@@ -4,7 +4,7 @@
  */
 package org.lib.integration;
 
-import org.lib.integration.impl.DefaultDAOFactory;
+import org.lib.integration.impl.DAOFactoryDefault;
 
 /**
  *
@@ -15,13 +15,14 @@ public abstract class AbstractDAOFactory {
     private static AbstractDAOFactory instance;
 
     public abstract ReaderDAO getReaderDAO();
+//    public abstract BookDAO getReaderDAO();
 
     public static AbstractDAOFactory getDefault() {
         if (instance == null) {
-            // vyhledavani sluzby
-            instance = new DefaultDAOFactory();
+            // h;ledani sluzby
+            instance = new DAOFactoryDefault();
+
         }
         return instance;
-
     }
 }

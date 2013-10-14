@@ -18,22 +18,22 @@ import org.lib.utils.LibraryException;
  *
  * @author danecek
  */
-public class ReaderDAODefault implements ReaderDAO {
+public class ReaderDAOImpl implements ReaderDAO {
 
-    static int idcount;
+    private static int keyCount;
     Map<ReaderId, Reader> readers = new ConcurrentHashMap<ReaderId, Reader>();
 
     public void create(String name, Address address) throws LibraryException {
-        ReaderId ri = new ReaderId(++idcount);
-        readers.put(ri, new Reader(ri, name, address));
+        Reader r = new Reader(new ReaderId(++keyCount), name, address);
+        readers.put(r.getId(), r);
     }
 
     public void delete(ReaderId id) throws LibraryException {
         readers.remove(id);
     }
 
-    public void update(Reader r) throws LibraryException {
-        readers.put(r.getId(), r);
+    public void update(Reader reader) throws LibraryException {
+        readers.put(reader.getId(), reader);
     }
 
     public Reader find(ReaderId id) throws LibraryException {

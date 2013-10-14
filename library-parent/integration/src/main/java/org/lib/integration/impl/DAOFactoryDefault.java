@@ -11,15 +11,16 @@ import org.lib.integration.ReaderDAO;
  *
  * @author danecek
  */
-public class DefaultDAOFactory extends AbstractDAOFactory {
+public class DAOFactoryDefault extends AbstractDAOFactory {
 
-    private static ReaderDAO instance;
+    ReaderDAODefault deaderDAODefault;
 
     @Override
     public ReaderDAO getReaderDAO() {
-        if (instance == null) {
-            instance = new ReaderDAODefault();
+        if (deaderDAODefault == null) {
+            deaderDAODefault =
+                    new ReaderDAODefault();
         }
-        return instance;
+        return deaderDAODefault;
     }
 }
