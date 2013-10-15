@@ -12,6 +12,7 @@
         <module>utils</module>
         <module>model</module>
     <module>integration</module>
+    <module>business</module>
   </modules>
     
     <reporting>

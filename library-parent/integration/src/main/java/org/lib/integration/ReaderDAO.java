@@ -16,7 +16,7 @@ import org.lib.utils.LibraryException;
  */
 public interface ReaderDAO {
     
-    void create(String name, Address address) throws LibraryException;
+    Reader create(String name, Address address) throws LibraryException;
     void delete(ReaderId id) throws LibraryException;
     void update(Reader reader) throws LibraryException;
     Reader find(ReaderId id) throws LibraryException;

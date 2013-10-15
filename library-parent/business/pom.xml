@@ -8,11 +8,11 @@
   </parent>
 
     <groupId>org.lib</groupId>
-    <artifactId>integration</artifactId>
+    <artifactId>business</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>bundle</packaging>
 
-    <name>integration OSGi Bundle</name>
+    <name>business OSGi Bundle</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -32,8 +32,19 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
+            <artifactId>integration</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
             <artifactId>utils</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -46,9 +57,9 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Bundle-Activator>org.lib.integration.Activator</Bundle-Activator>
-                        <Export-Package >org.lib.integration</Export-Package>
-                        <Private-Package>org.lib.integration.*</Private-Package>
+                        <Bundle-Activator>org.lib.business.Activator</Bundle-Activator>
+                        <Export-Package >org.lib.business</Export-Package>
+                        <Private-Package>org.lib.business.*</Private-Package>
                     </instructions>
                 </configuration>
             </plugin>

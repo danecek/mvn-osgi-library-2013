@@ -5,6 +5,8 @@
 package org.lib.integration.impl;
 
 import org.lib.integration.AbstractDAOFactory;
+import org.lib.integration.BookDAO;
+import org.lib.integration.BorrowDAO;
 import org.lib.integration.ReaderDAO;
 
 /**
@@ -13,14 +15,34 @@ import org.lib.integration.ReaderDAO;
  */
 public class DAOFactoryDefault extends AbstractDAOFactory {
 
-    ReaderDAODefault deaderDAODefault;
+    private ReaderDAO readerDAO;
+    private BookDAO bookDAO;
+    private BorrowDAO borrowDAO;
 
     @Override
     public ReaderDAO getReaderDAO() {
-        if (deaderDAODefault == null) {
-            deaderDAODefault =
-                    new ReaderDAODefault();
+        if (readerDAO == null) {
+            readerDAO =
+                    new ReaderDAOImpl();
         }
-        return deaderDAODefault;
+        return readerDAO;
+    }
+
+    @Override
+    public BookDAO getBookDAO() {
+        if (bookDAO == null) {
+            bookDAO =
+                    new BookDAOImpl();
+        }
+        return bookDAO;
+    }
+
+    @Override
+    public BorrowDAO getBorrowDAO() {
+        if (borrowDAO == null) {
+            borrowDAO =
+                    new BorrowDAOImpl();
+        }
+        return borrowDAO;
     }
 }

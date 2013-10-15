@@ -15,7 +15,8 @@ public abstract class AbstractDAOFactory {
     private static AbstractDAOFactory instance;
 
     public abstract ReaderDAO getReaderDAO();
-//    public abstract BookDAO getReaderDAO();
+    public abstract BookDAO getBookDAO();
+    public abstract BorrowDAO getBorrowDAO();
 
     public static AbstractDAOFactory getDefault() {
         if (instance == null) {

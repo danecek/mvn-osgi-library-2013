@@ -23,9 +23,10 @@ public class ReaderDAOImpl implements ReaderDAO {
     private static int keyCount;
     Map<ReaderId, Reader> readers = new ConcurrentHashMap<ReaderId, Reader>();
 
-    public void create(String name, Address address) throws LibraryException {
+    public Reader create(String name, Address address) throws LibraryException {
         Reader r = new Reader(new ReaderId(++keyCount), name, address);
         readers.put(r.getId(), r);
+        return r;
     }
 
     public void delete(ReaderId id) throws LibraryException {
