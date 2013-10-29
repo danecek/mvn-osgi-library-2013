@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.lib.integration.ReaderDAO;
 import org.lib.model.Address;
 import org.lib.model.Reader;
@@ -22,6 +24,15 @@ public class ReaderDAOImpl implements ReaderDAO {
 
     private static int keyCount;
     Map<ReaderId, Reader> readers = new ConcurrentHashMap<ReaderId, Reader>();
+
+    public ReaderDAOImpl() {
+        try {
+            create("Novak", new Address("Praha"));
+            create("Svoboda", new Address("Praha"));
+        } catch (LibraryException ex) {
+            Logger.getLogger(ReaderDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public Reader create(String name, Address address) throws LibraryException {
         Reader r = new Reader(new ReaderId(++keyCount), name, address);

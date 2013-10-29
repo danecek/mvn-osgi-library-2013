@@ -1,5 +1,6 @@
 package org.lib.application;
 
+import org.lib.view.MainFrame;
 import javax.swing.SwingUtilities;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;

@@ -1,4 +1,4 @@
-package org.lib.gui;
+package org.lib.view;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;

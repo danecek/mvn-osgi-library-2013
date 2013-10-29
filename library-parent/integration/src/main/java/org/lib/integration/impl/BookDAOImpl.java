@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.lib.integration.BookDAO;
 import org.lib.model.Book;
 import org.lib.model.BookId;
@@ -21,6 +23,15 @@ public class BookDAOImpl implements BookDAO {
 
     private static int keyCount;
     Map<BookId, Book> books = new ConcurrentHashMap<BookId, Book>();
+
+    public BookDAOImpl() {
+        try {
+            create("RUR");
+            create("Maj");
+        } catch (LibraryException ex) {
+            Logger.getLogger(BookDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public Book create(String title) throws LibraryException {
         Book book = new Book(new BookId(++keyCount), title);

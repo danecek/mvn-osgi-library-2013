@@ -10,9 +10,21 @@ package org.lib.model;
  */
 public class Address {
 
-    String address;
+    private String address;
 
     public Address(String address) {
         this.address = address;
+    }
+
+    /**
+     * @return the address
+     */
+    public String getAddress() {
+        return address;
+    }
+
+    @Override
+    public String toString() {
+        return address;
     }
 }

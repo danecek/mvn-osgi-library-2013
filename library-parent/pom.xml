@@ -8,11 +8,11 @@
     <name>library-parent</name>
     <modules>
         <module>application</module>
-        <module>gui</module>
         <module>utils</module>
         <module>model</module>
     <module>integration</module>
     <module>business</module>
+    <module>view</module>
   </modules>
     
     <reporting>

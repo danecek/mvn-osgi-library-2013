@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.lib.application;
+package org.lib.view;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -23,6 +23,8 @@ public class MainFrame extends JFrame {
 
     public MainFrame(final BundleContext context) {
         super(Messages.Main_Frame.cm());
+        
+        add(new MainPanel());
 
         addWindowListener(new WindowAdapter() {
             @Override
