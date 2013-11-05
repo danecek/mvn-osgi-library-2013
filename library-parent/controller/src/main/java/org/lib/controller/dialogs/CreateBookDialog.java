@@ -20,13 +20,12 @@ public class CreateBookDialog extends AbstractLibraryDialog {
     public CreateBookDialog() {
         super("Create Book"); // todo
         title = new ValidatedTF(this);
-        content.setLayout(new GridLayout(0,2));
+        content.setLayout(new GridLayout(0, 2));
         content.add(new JLabel("Title:"));
         content.add(title);
+        validateDialog();
         pack();
         setVisible(true);
-        validateDialog();
-
     }
 
     public boolean validateDialog() {
