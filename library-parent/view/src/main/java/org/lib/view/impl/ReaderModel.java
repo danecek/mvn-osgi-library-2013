@@ -15,6 +15,7 @@ import javax.swing.table.AbstractTableModel;
 import org.lib.business.LibraryFacade;
 import org.lib.model.Reader;
 import org.lib.utils.LibraryException;
+import static org.lib.utils.Messages.*;
 
 /**
  *
@@ -78,11 +79,11 @@ public final class ReaderModel extends AbstractTableModel {
     public String getColumnName(int col) {
         switch (col) {
             case 0:
-                return "Id";
+                return Id.cm();
             case 1:
-                return "Name";
+                return Name.cm();
             case 2:
-                return "Address";
+                return Address.cm();
             default:
                 assert false;
                 return null;

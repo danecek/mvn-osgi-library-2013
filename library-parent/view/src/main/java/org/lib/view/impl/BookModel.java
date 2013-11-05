@@ -15,6 +15,7 @@ import javax.swing.table.AbstractTableModel;
 import org.lib.business.LibraryFacade;
 import org.lib.model.Book;
 import org.lib.utils.LibraryException;
+import static org.lib.utils.Messages.*;
 
 /**
  *
@@ -33,9 +34,9 @@ public final class BookModel extends AbstractTableModel {
     }
 
     Collection<Book> getBooks(int[] rows) {
-        ArrayList<Book> sbs = new ArrayList<Book>();
+        ArrayList<Book> sbs = new ArrayList<>();
         for (int row : rows) {
-          sbs.add(books.get(row));
+            sbs.add(books.get(row));
         }
         return sbs;
     }
@@ -80,9 +81,9 @@ public final class BookModel extends AbstractTableModel {
     public String getColumnName(int col) {
         switch (col) {
             case 0:
-                return "Id";
+                return Id.cm();
             case 1:
-                return "Title";
+                return Title.cm();
             default:
                 assert false;
                 return null;

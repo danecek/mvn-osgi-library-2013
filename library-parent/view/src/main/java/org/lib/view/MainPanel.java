@@ -25,6 +25,7 @@ public class MainPanel extends JPanel {
 
         JSplitPane sp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
                 new ReaderPanel(), new BookPanel());
+        sp.setDividerLocation(400);
         add(sp);
 
     }

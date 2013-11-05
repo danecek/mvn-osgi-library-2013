@@ -9,7 +9,9 @@ import java.awt.event.WindowEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import org.lib.utils.Messages;
+import org.lib.view.impl.LibraryMenuBar;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.BundleException;
@@ -23,7 +25,9 @@ public class MainFrame extends JFrame {
 
     public MainFrame(final BundleContext context) {
         super(Messages.Main_Frame.cm());
-        
+
+        setJMenuBar(new LibraryMenuBar());
+
         add(new MainPanel());
 
         addWindowListener(new WindowAdapter() {
@@ -43,5 +47,9 @@ public class MainFrame extends JFrame {
         setBounds(300, 300, 800, 400);
         setVisible(true);
 
+    }
+
+    public static void showError(String message) {
+        JOptionPane.showMessageDialog(null, message);
     }
 }

@@ -13,6 +13,7 @@
     <module>integration</module>
     <module>business</module>
     <module>view</module>
+    <module>controller</module>
   </modules>
     
     <reporting>

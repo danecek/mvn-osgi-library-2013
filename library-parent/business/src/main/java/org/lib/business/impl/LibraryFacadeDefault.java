@@ -31,6 +31,11 @@ public class LibraryFacadeDefault extends LibraryFacade {
     }
 
     @Override
+    public void updateReader(Reader reader) throws LibraryException {
+        AbstractDAOFactory.getDefault().getReaderDAO().update(reader);
+    }
+
+    @Override
     public void deleteReader(ReaderId id) throws LibraryException {
         AbstractDAOFactory.getDefault().getReaderDAO().delete(id);
     }
@@ -41,13 +46,18 @@ public class LibraryFacadeDefault extends LibraryFacade {
     }
 
     @Override
-    public void deleteBook(BookId id) throws LibraryException {
-        AbstractDAOFactory.getDefault().getBookDAO().delete(id);
+    public Collection<Book> getBooks() throws LibraryException {
+        return AbstractDAOFactory.getDefault().getBookDAO().getAll();
     }
 
     @Override
-    public Collection<Book> getBooks() throws LibraryException {
-        return AbstractDAOFactory.getDefault().getBookDAO().getAll();
+    public void updateBook(Book book) throws LibraryException {
+        AbstractDAOFactory.getDefault().getBookDAO().update(book);
+    }
+
+    @Override
+    public void deleteBook(BookId id) throws LibraryException {
+        AbstractDAOFactory.getDefault().getBookDAO().delete(id);
     }
 
     @Override

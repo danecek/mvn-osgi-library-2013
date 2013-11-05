@@ -15,7 +15,12 @@ import java.util.logging.Logger;
  * @author danecek
  */
 public enum Messages {
-
+    Id,
+    Name,
+    Address,
+    Title,
+    Exit,
+    File,
     Main_Frame;
 
     public String cm(Object ... args) {

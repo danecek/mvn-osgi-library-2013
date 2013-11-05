@@ -32,15 +32,19 @@ public abstract class LibraryFacade {
 
     public abstract Reader createReader(String name, Address address) throws LibraryException;
 
-    public abstract void deleteReader(ReaderId id) throws LibraryException;
-
     public abstract Collection<Reader> getReaders() throws LibraryException;
+
+    public abstract void updateReader(Reader reader) throws LibraryException;
+
+    public abstract void deleteReader(ReaderId id) throws LibraryException;
 
     public abstract Book createBook(String title) throws LibraryException;
 
-    public abstract void deleteBook(BookId id) throws LibraryException;
+    public abstract void updateBook(Book book) throws LibraryException;
 
     public abstract Collection<Book> getBooks() throws LibraryException;
+
+    public abstract void deleteBook(BookId id) throws LibraryException;
 
     public abstract void returnBooks(ReaderId id, Collection<Book> books) throws LibraryException;
 
