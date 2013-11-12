@@ -16,18 +16,21 @@ import org.lib.business.LibraryFacade;
 import org.lib.model.Reader;
 import org.lib.utils.LibraryException;
 import static org.lib.utils.Messages.*;
+import org.lib.view.MainFrame;
 
 /**
  *
  * @author danecek
  */
-public final class ReaderModel extends AbstractTableModel {
+public final class ReaderModel 
+extends AbstractTableModel implements Refreshable {
 
     List<Reader> readers = new ArrayList<>();
 
     public ReaderModel() {
         try {
             refresh();
+            MainFrame.addRefreshable(this);
         } catch (LibraryException ex) {
             Logger.getLogger(ReaderModel.class.getName()).log(Level.SEVERE, null, ex);
         }

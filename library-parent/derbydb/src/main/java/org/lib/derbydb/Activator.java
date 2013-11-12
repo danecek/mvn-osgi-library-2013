@@ -1,20 +1,18 @@
-package org.lib.integration;
+package org.lib.derbydb;
 
+import org.lib.derbydb.impl.DerbyDAOFactory;
+import org.lib.integration.AbstractDAOFactory;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
-import org.osgi.util.tracker.ServiceTracker;
 
 public class Activator implements BundleActivator {
 
     public void start(BundleContext context) throws Exception {
-      ServiceTracker st =  new ServiceTracker(context, AbstractDAOFactory.class, null);
-      st.open();
-      AbstractDAOFactory.setSt(st);
-        
+        context.registerService(AbstractDAOFactory.class,
+                new DerbyDAOFactory(), null);
     }
 
     public void stop(BundleContext context) throws Exception {
         // TODO add deactivation code here
     }
-
 }

@@ -8,12 +8,13 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import org.lib.business.LibraryFacade;
 import org.lib.utils.LibraryException;
+import org.lib.view.MainFrame;
 
 /**
  *
  * @author danecek
  */
-public class CreateBookDialog extends AbstractLibraryDialog {
+public final class CreateBookDialog extends AbstractLibraryDialog {
 
     ValidatedTF title;
 
@@ -28,6 +29,7 @@ public class CreateBookDialog extends AbstractLibraryDialog {
         setVisible(true);
     }
 
+    @Override
     public boolean validateDialog() {
         if (title.getText().isEmpty()) {
             error("Prazdny titul");// todo
@@ -43,8 +45,9 @@ public class CreateBookDialog extends AbstractLibraryDialog {
     void okAction() {
         try {
             LibraryFacade.getDefault().createBook(title.getText());
+            MainFrame.getInstance().refresh();
         } catch (LibraryException le) {
-            System.out.println(le);  // todo
+            MainFrame.getInstance().showError(le);
         }
     }
 }

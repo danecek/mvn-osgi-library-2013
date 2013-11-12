@@ -14,6 +14,7 @@
     <module>business</module>
     <module>view</module>
     <module>controller</module>
+    <module>derbydb</module>
   </modules>
     
     <reporting>

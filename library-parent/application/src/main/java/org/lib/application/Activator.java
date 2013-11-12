@@ -2,6 +2,7 @@ package org.lib.application;
 
 import org.lib.view.MainFrame;
 import javax.swing.SwingUtilities;
+import org.lib.controller.LibraryMenuBar;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
@@ -12,7 +13,7 @@ public class Activator implements BundleActivator {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new MainFrame(context);
+                MainFrame.init(context, new LibraryMenuBar());
             }
         });
     }

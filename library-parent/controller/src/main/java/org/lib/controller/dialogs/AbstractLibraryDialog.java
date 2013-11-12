@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import org.lib.view.MainFrame;
 
 /**
  *
@@ -25,7 +26,7 @@ public abstract class AbstractLibraryDialog extends JDialog implements Validator
     JPanel content = new JPanel();
 
     public AbstractLibraryDialog(String title) {
-        super((JDialog) null, title, true);
+        super(MainFrame.getInstance(), title, true);
         buttonBox.add(Box.createHorizontalGlue());
         buttonBox.add(new JButton(new AbstractAction("Cancel") {
             @Override
@@ -43,6 +44,7 @@ public abstract class AbstractLibraryDialog extends JDialog implements Validator
         add(errorLabel, BorderLayout.NORTH);
         add(content);
         add(buttonBox, BorderLayout.SOUTH);
+        setLocation(MainFrame.getInstance().getLocation());
         
     }
 

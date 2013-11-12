@@ -16,18 +16,20 @@ import org.lib.business.LibraryFacade;
 import org.lib.model.Book;
 import org.lib.utils.LibraryException;
 import static org.lib.utils.Messages.*;
+import org.lib.view.MainFrame;
 
 /**
  *
  * @author danecek
  */
-public final class BookModel extends AbstractTableModel {
+public final class BookModel extends AbstractTableModel implements Refreshable {
 
     List<Book> books = new ArrayList<>();
 
     public BookModel() {
         try {
             refresh();
+            MainFrame.addRefreshable(this);
         } catch (LibraryException ex) {
             Logger.getLogger(BookModel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -41,6 +43,7 @@ public final class BookModel extends AbstractTableModel {
         return sbs;
     }
 
+    @Override
     public void refresh() throws LibraryException {
         Collection<Book> rs = LibraryFacade.getDefault().getBooks();
         books = new ArrayList<>(rs);
@@ -50,6 +53,7 @@ public final class BookModel extends AbstractTableModel {
                 return t.getTitle().compareTo(t1.getTitle()); // Lepe Collator 
             }
         });
+        fireTableDataChanged();
     }
 
     @Override

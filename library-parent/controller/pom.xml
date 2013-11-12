@@ -30,6 +30,11 @@
             <artifactId>business</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>view</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -42,8 +47,7 @@
                 <configuration>
                     <instructions>
                         <Bundle-Activator>org.lib.controller.Activator</Bundle-Activator>
-                        <Export-Package >org.lib.controller.actions</Export-Package>
-                        <Private-Package>org.lib.controller.*</Private-Package>
+                        <Export-Package >org.lib.controller,org.lib.controller.actions,org.lib.controller.dialogs</Export-Package>
                     </instructions>
                 </configuration>
             </plugin>

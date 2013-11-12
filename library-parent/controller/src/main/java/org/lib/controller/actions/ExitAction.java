@@ -6,6 +6,7 @@ package org.lib.controller.actions;
 
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
+import org.lib.view.MainFrame;
 
 /**
  *
@@ -27,9 +28,12 @@ public class ExitAction extends AbstractLibraryAction {
         this.putValue(AbstractAction.SHORT_DESCRIPTION, "Ukonceni");
     }
 
+    @Override
     public void actionPerformed(ActionEvent ae) {
+        MainFrame.getInstance().exit();
     }
     
+    @Override
     public boolean shouldEnabled() {
         return true;
     }

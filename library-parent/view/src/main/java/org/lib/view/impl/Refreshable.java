@@ -4,17 +4,14 @@
  */
 package org.lib.view.impl;
 
-import javax.swing.JMenuBar;
+import org.lib.utils.LibraryException;
 
 /**
  *
  * @author danecek
  */
-public class LibraryMenuBar extends JMenuBar {
+public interface Refreshable {
 
-    public LibraryMenuBar() {
-        add(new FileMenu());
-    }
-    
+    void refresh() throws LibraryException;
     
 }
