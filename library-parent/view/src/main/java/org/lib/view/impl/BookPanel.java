@@ -5,6 +5,7 @@
 package org.lib.view.impl;
 
 import java.awt.BorderLayout;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -31,5 +32,13 @@ public class BookPanel extends JPanel {
         int[] sr = tbl.getSelectedRows();
         return bm.getBooks(sr);
 
+    }
+
+    public Book getSelectedBook() {
+        int row = tbl.getSelectedRow();
+        if (row == -1) {
+            return null;
+        }
+        return new ArrayList<Book>(bm.getBooks(new int[]{row})).get(0);
     }
 }

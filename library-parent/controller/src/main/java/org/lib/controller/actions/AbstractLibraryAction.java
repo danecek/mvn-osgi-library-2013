@@ -7,25 +7,18 @@ package org.lib.controller.actions;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.swing.AbstractAction;
+import org.lib.view.MainFrame;
+import org.lib.view.TestEnable;
 
 /**
  *
  * @author danecek
  */
-public abstract class AbstractLibraryAction extends AbstractAction {
-
-    static Collection<AbstractLibraryAction> actions = new ArrayList<>();
+public abstract class AbstractLibraryAction extends AbstractAction implements TestEnable{
 
     public AbstractLibraryAction(String string) {
         super(string);
-        actions.add(this);
+        MainFrame.addTestEnable(this);
     }
 
-    public abstract boolean shouldEnabled();
-
-    public static void notifyActions() {
-        for (AbstractLibraryAction la : actions) {
-            la.setEnabled(la.shouldEnabled());
-        }
-    }
 }

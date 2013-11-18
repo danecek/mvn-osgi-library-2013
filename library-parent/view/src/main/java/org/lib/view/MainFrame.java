@@ -4,6 +4,7 @@
  */
 package org.lib.view;
 
+import java.awt.HeadlessException;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
+import org.lib.model.Book;
 import org.lib.utils.LibraryException;
 import org.lib.utils.Messages;
 import org.lib.view.impl.Refreshable;
@@ -29,6 +31,7 @@ public class MainFrame extends JFrame {
 
     private static MainFrame instance;
     static Collection<Refreshable> rf = new ArrayList<>();
+    static Collection<TestEnable> tec = new ArrayList<>();
 
     /**
      * @return the instance
@@ -52,13 +55,14 @@ public class MainFrame extends JFrame {
             Logger.getLogger(MainFrame.class.getName()).log(Level.INFO, null, ex);
         }
     }
+    MainPanel mainPanel;
 
     public MainFrame(BundleContext context, JMenuBar menuBar) {
         super(Messages.Main_Frame.cm());
         this.context = context;
         setJMenuBar(menuBar);
 
-        add(new MainPanel());
+        add(mainPanel = new MainPanel());
 
         addWindowListener(new WindowAdapter() {
             @Override
@@ -88,9 +92,21 @@ public class MainFrame extends JFrame {
                 showError(ex);
             }
         }
+        for (TestEnable te : tec) {
+            te.shouldEnabled();
+        }
     }
 
     public static void addRefreshable(Refreshable r) {
         rf.add(r);
+    }
+    
+    public static void addTestEnable(TestEnable te) {
+        tec.add(te);
+        
+    }
+
+    public Book getSelectedBook() {
+        return mainPanel.getSelectedBook();
     }
 }

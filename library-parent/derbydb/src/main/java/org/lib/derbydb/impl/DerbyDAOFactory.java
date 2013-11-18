@@ -44,8 +44,6 @@ public class DerbyDAOFactory extends AbstractDAOFactory {
             derbyBookDAO = new DerbyBookDAO(con);
         }
         return derbyBookDAO;
-
-
     }
 
     @Override

@@ -6,6 +6,7 @@ package org.lib.controller;
 
 import javax.swing.JMenu;
 import org.lib.controller.actions.CreateBookAction;
+import org.lib.controller.actions.DeleteBookAction;
 
 /**
  *
@@ -16,6 +17,7 @@ public class BookMenu extends JMenu{
     public BookMenu() {
         super("Book");  // todo
         add(CreateBookAction.getInstance());
+        add(DeleteBookAction.getInstance());
     }
     
     

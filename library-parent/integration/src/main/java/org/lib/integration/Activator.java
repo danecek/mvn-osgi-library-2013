@@ -8,7 +8,7 @@ public class Activator implements BundleActivator {
 
     public void start(BundleContext context) throws Exception {
       ServiceTracker st =  new ServiceTracker(context, AbstractDAOFactory.class, null);
-      st.open();
+      st.open();// !!!
       AbstractDAOFactory.setSt(st);
         
     }
