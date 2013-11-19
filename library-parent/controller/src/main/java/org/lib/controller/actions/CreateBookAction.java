@@ -31,12 +31,5 @@ public class CreateBookAction extends AbstractLibraryAction {
         new CreateBookDialog();
     }
 
-    @Override
-    public boolean shouldEnabled() {
-        return true;
-    }
-    
-    
-    
     
 }

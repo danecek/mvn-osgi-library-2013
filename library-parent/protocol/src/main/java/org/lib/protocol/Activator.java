@@ -1,17 +1,16 @@
-package org.lib.business;
+package org.lib.protocol;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
-import org.osgi.util.tracker.ServiceTracker;
 
 public class Activator implements BundleActivator {
-    
+
     public void start(BundleContext context) throws Exception {
-        ServiceTracker st = new ServiceTracker(context, LibraryFacade.class, null);
-        LibraryFacade.setSt(st);
+        // TODO add activation code here
     }
-    
+
     public void stop(BundleContext context) throws Exception {
         // TODO add deactivation code here
     }
+
 }

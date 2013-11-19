@@ -31,7 +31,7 @@ public class MainFrame extends JFrame {
 
     private static MainFrame instance;
     static Collection<Refreshable> rf = new ArrayList<>();
-    static Collection<TestEnable> tec = new ArrayList<>();
+    static Collection<SetEnable> tec = new ArrayList<>();
 
     /**
      * @return the instance
@@ -92,21 +92,26 @@ public class MainFrame extends JFrame {
                 showError(ex);
             }
         }
-        for (TestEnable te : tec) {
-            te.shouldEnabled();
-        }
+        actionsNotif();
+
     }
 
     public static void addRefreshable(Refreshable r) {
         rf.add(r);
     }
-    
-    public static void addTestEnable(TestEnable te) {
+
+    public static void addTestEnable(SetEnable te) {
         tec.add(te);
-        
+
     }
 
     public Book getSelectedBook() {
         return mainPanel.getSelectedBook();
+    }
+
+    public void actionsNotif() {
+        for (SetEnable te : tec) {
+            te.setEnable();
+        }
     }
 }

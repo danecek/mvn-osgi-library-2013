@@ -12,6 +12,7 @@ import org.lib.model.BookId;
 import org.lib.model.Reader;
 import org.lib.model.ReaderId;
 import org.lib.utils.LibraryException;
+import org.osgi.util.tracker.ServiceTracker;
 
 /**
  *
@@ -19,15 +20,25 @@ import org.lib.utils.LibraryException;
  */
 public abstract class LibraryFacade {
 
+    private static ServiceTracker st;
     private static LibraryFacade libraryFacade;
 
     public static LibraryFacade getDefault() {
         if (libraryFacade == null) {
-            // neni li jina nabidka sluzby
-            libraryFacade = new LibraryFacadeDefault();
+            libraryFacade = (LibraryFacade) st.getService();
+            if (libraryFacade == null) {
+                libraryFacade = new LibraryFacadeDefault();
+            }
         }
         return libraryFacade;
 
+    }
+
+    /**
+     * @param aSt the st to set
+     */
+    public static void setSt(ServiceTracker aSt) {
+        st = aSt;
     }
 
     public abstract Reader createReader(String name, Address address) throws LibraryException;

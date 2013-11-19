@@ -33,8 +33,5 @@ public class ExitAction extends AbstractLibraryAction {
         MainFrame.getInstance().exit();
     }
     
-    @Override
-    public boolean shouldEnabled() {
-        return true;
-    }
+
 }

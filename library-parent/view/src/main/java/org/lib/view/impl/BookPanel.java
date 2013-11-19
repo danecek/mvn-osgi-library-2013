@@ -11,7 +11,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import org.lib.model.Book;
+import org.lib.view.MainFrame;
 
 /**
  *
@@ -25,7 +28,15 @@ public class BookPanel extends JPanel {
     public BookPanel() {
         setLayout(new BorderLayout());
         add(new JScrollPane(tbl = new JTable(bm = new BookModel())));
-        tbl.getSelectionModel().setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        ListSelectionModel sm = tbl.getSelectionModel();
+        sm.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        sm.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent lse) {
+                MainFrame.getInstance().actionsNotif();
+            }
+        });
+
     }
 
     Collection<Book> getSelectedBooks() {

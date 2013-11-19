@@ -8,7 +8,7 @@ package org.lib.view;
  *
  * @author danecek
  */
-public interface TestEnable {
+public interface SetEnable {
 
-    boolean shouldEnabled();
+    void setEnable();
 }
