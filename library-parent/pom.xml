@@ -17,6 +17,7 @@
     <module>derbydb</module>
     <module>protocol</module>
     <module>proxy</module>
+    <module>server</module>
   </modules>
     
     <reporting>

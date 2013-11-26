@@ -11,4 +11,6 @@ package org.lib.view;
 public interface SetEnable {
 
     void setEnable();
+
+     String getMenuName();
 }

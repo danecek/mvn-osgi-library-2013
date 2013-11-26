@@ -4,14 +4,17 @@
  */
 package org.lib.view;
 
-import java.awt.HeadlessException;
+import java.awt.Menu;
+import java.awt.MenuBar;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Action;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import org.lib.model.Book;
@@ -31,19 +34,18 @@ public class MainFrame extends JFrame {
 
     private static MainFrame instance;
     static Collection<Refreshable> rf = new ArrayList<>();
-    static Collection<SetEnable> tec = new ArrayList<>();
+    Collection<SetEnable> tec = new ArrayList<>();
 
     /**
      * @return the instance
      */
     public static MainFrame getInstance() {
+        if (instance == null) {
+            instance = new MainFrame();
+        }
         return instance;
     }
-    BundleContext context;
-
-    public static void init(BundleContext context, JMenuBar menuBar) {
-        instance = new MainFrame(context, menuBar);
-    }
+    private BundleContext context;
 
     public void exit() {
         try {
@@ -56,11 +58,11 @@ public class MainFrame extends JFrame {
         }
     }
     MainPanel mainPanel;
+    JMenuBar menuBar;
 
-    public MainFrame(BundleContext context, JMenuBar menuBar) {
+    public MainFrame() {
         super(Messages.Main_Frame.cm());
-        this.context = context;
-        setJMenuBar(menuBar);
+        setJMenuBar(menuBar = new JMenuBar());
 
         add(mainPanel = new MainPanel());
 
@@ -72,7 +74,6 @@ public class MainFrame extends JFrame {
         });
 
         setBounds(300, 300, 800, 400);
-        setVisible(true);
 
     }
 
@@ -100,8 +101,21 @@ public class MainFrame extends JFrame {
         rf.add(r);
     }
 
-    public static void addTestEnable(SetEnable te) {
+    public void addTestEnable(SetEnable te) {
         tec.add(te);
+        JMenu mn;
+        JMenuBar mnb = getJMenuBar();
+        for (int i = 0; i < mnb.getMenuCount(); i++) {
+            mn = mnb.getMenu(i);
+            if (mn.getName().equals(te.getMenuName())) {
+                mn.add((Action) te);
+                return;
+            }
+        }
+        mn = new JMenu(te.getMenuName());
+        mnb.add(mn);
+        mn.add((Action) te);
+        
 
     }
 
@@ -113,5 +127,12 @@ public class MainFrame extends JFrame {
         for (SetEnable te : tec) {
             te.setEnable();
         }
+    }
+
+    /**
+     * @param context the context to set
+     */
+    public void setContext(BundleContext context) {
+        this.context = context;
     }
 }

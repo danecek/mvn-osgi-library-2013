@@ -13,13 +13,10 @@ import org.lib.controller.dialogs.CreateBookDialog;
  */
 public class CreateBookAction extends AbstractLibraryAction {
     
-    private CreateBookAction() {
-        super("Create Book"); // todo
+    public CreateBookAction() {
+        super("Create Book", "File"); // todo
     }
     
-    public static CreateBookAction getInstance() {
-        return CreateBookActionHolder.INSTANCE;
-    }
     
     private static class CreateBookActionHolder {
         private static final CreateBookAction INSTANCE = 

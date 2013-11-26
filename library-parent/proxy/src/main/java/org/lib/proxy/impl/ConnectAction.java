@@ -14,7 +14,7 @@ import org.lib.controller.actions.AbstractLibraryAction;
 public class ConnectAction extends AbstractLibraryAction {
 
     public ConnectAction() {
-        super("Connect");
+        super("Connect", "Connection");
     }
 
     public void actionPerformed(ActionEvent ae) {

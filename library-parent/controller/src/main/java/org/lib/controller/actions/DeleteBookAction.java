@@ -5,8 +5,6 @@
 package org.lib.controller.actions;
 
 import java.awt.event.ActionEvent;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.lib.business.LibraryFacade;
 import org.lib.model.Book;
@@ -19,19 +17,9 @@ import org.lib.view.MainFrame;
  */
 public class DeleteBookAction extends AbstractLibraryAction {
 
-    private DeleteBookAction() {
-        super("Delete Book"); // todo
+    public DeleteBookAction() {
+        super("Delete Book", "Book"); // todo
         setEnabled(false);
-    }
-
-    public static DeleteBookAction getInstance() {
-        return DeleteBookActionHolder.INSTANCE;
-    }
-
-    private static class DeleteBookActionHolder {
-
-        private static final DeleteBookAction INSTANCE =
-                new DeleteBookAction();
     }
 
     @Override

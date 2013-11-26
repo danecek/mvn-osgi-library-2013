@@ -12,18 +12,24 @@ import org.lib.view.SetEnable;
  *
  * @author danecek
  */
-public abstract class AbstractLibraryAction extends AbstractAction implements 
-        SetEnable{
+public abstract class AbstractLibraryAction extends AbstractAction implements
+        SetEnable {
 
-    public AbstractLibraryAction(String string) {
-        super(string);
-        MainFrame.addTestEnable(this);
+    private String menuName;
+
+    public AbstractLibraryAction(String actionName, String menuName) {
+        super(actionName);
+        this.menuName = menuName;
     }
 
     @Override
     public void setEnable() {
     }
-    
-    
 
+    /**
+     * @return the menuName
+     */
+    public String getMenuName() {
+        return menuName;
+    }
 }

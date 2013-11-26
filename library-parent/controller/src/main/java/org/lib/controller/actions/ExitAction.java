@@ -14,17 +14,9 @@ import org.lib.view.MainFrame;
  */
 public class ExitAction extends AbstractLibraryAction {
     
-    private static ExitAction instance = new ExitAction();
 
-    /**
-     * @return the instance
-     */
-    public static ExitAction getInstance() {
-        return instance;
-    }
-
-    private ExitAction() {
-        super("Exit"); // todo
+    public ExitAction() {
+        super("Exit", "File"); // todo
         this.putValue(AbstractAction.SHORT_DESCRIPTION, "Ukonceni");
     }
 
