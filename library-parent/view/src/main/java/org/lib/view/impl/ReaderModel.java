@@ -28,18 +28,19 @@ extends AbstractTableModel implements Refreshable {
     List<Reader> readers = new ArrayList<>();
 
     public ReaderModel() {
-        try {
-            refresh();
-            MainFrame.addRefreshable(this);
-        } catch (LibraryException ex) {
-            Logger.getLogger(ReaderModel.class.getName()).log(Level.SEVERE, null, ex);
-        }
+           MainFrame.addRefreshable(this);
+//        try {
+//            refresh();
+//        } catch (LibraryException ex) {
+//            Logger.getLogger(ReaderModel.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     Reader getReader(int row) {
         return readers.get(row);
     }
 
+    @Override
     public void refresh() throws LibraryException {
         Collection<Reader> rs = LibraryFacade.getDefault().getReaders();
         readers = new ArrayList<>(rs);

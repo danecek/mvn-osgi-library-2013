@@ -8,6 +8,7 @@ public class Activator implements BundleActivator {
     
     public void start(BundleContext context) throws Exception {
         ServiceTracker st = new ServiceTracker(context, LibraryFacade.class, null);
+        st.open();
         LibraryFacade.setSt(st);
     }
     

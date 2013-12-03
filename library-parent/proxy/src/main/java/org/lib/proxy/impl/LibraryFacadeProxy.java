@@ -4,6 +4,7 @@
  */
 package org.lib.proxy.impl;
 
+import org.lib.connection.Connection;
 import java.util.Collection;
 import org.lib.business.LibraryFacade;
 import org.lib.model.Address;
@@ -12,6 +13,8 @@ import org.lib.model.BookId;
 import org.lib.model.Reader;
 import org.lib.model.ReaderId;
 import org.lib.protocol.CreateBook;
+import org.lib.protocol.GetBooks;
+import org.lib.protocol.GetReaders;
 import org.lib.utils.LibraryException;
 
 /**
@@ -27,7 +30,7 @@ public class LibraryFacadeProxy extends LibraryFacade {
 
     @Override
     public Collection<Reader> getReaders() throws LibraryException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (Collection<Reader>) Connection.getInstance().send(new GetReaders());
     }
 
     @Override
@@ -52,7 +55,7 @@ public class LibraryFacadeProxy extends LibraryFacade {
 
     @Override
     public Collection<Book> getBooks() throws LibraryException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (Collection<Book>) Connection.getInstance().send(new GetBooks());
     }
 
     @Override

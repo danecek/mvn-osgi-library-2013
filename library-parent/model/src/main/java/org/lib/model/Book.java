@@ -4,11 +4,13 @@
  */
 package org.lib.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author danecek
  */
-public class Book {
+public class Book implements Serializable{
 
     private BookId id;
     private String title;

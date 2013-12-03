@@ -18,6 +18,6 @@ public class ConnectAction extends AbstractLibraryAction {
     }
 
     public void actionPerformed(ActionEvent ae) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        new ConnectDialog();
     }
 }

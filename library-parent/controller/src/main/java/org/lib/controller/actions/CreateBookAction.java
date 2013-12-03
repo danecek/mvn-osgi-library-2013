@@ -14,7 +14,7 @@ import org.lib.controller.dialogs.CreateBookDialog;
 public class CreateBookAction extends AbstractLibraryAction {
     
     public CreateBookAction() {
-        super("Create Book", "File"); // todo
+        super("Create Book", "Book"); // todo
     }
     
     

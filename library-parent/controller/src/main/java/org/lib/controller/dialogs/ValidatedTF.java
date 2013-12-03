@@ -15,6 +15,10 @@ import javax.swing.event.DocumentListener;
 public class ValidatedTF extends JTextField {
 
     public ValidatedTF(final Validator validator) {
+        this(validator, "");
+    }
+    public ValidatedTF(final Validator validator, String text) {
+        super(text);
         getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent de) {

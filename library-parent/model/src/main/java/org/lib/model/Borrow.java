@@ -4,13 +4,14 @@
  */
 package org.lib.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author danecek
  */
-public class Borrow {
+public class Borrow implements Serializable {
 
     ReaderId readerId;
     BookId bookId;

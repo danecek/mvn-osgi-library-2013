@@ -77,7 +77,7 @@ public class MainFrame extends JFrame {
 
     }
 
-    public void showError(LibraryException ex) {
+    public void showError(Exception ex) {
         showError(ex.toString());
     }
 
@@ -101,13 +101,13 @@ public class MainFrame extends JFrame {
         rf.add(r);
     }
 
-    public void addTestEnable(SetEnable te) {
+    public void addLibraryAction(SetEnable te) {
         tec.add(te);
         JMenu mn;
         JMenuBar mnb = getJMenuBar();
         for (int i = 0; i < mnb.getMenuCount(); i++) {
             mn = mnb.getMenu(i);
-            if (mn.getName().equals(te.getMenuName())) {
+            if (mn.getText().equals(te.getMenuName())) {
                 mn.add((Action) te);
                 return;
             }

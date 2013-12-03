@@ -23,7 +23,8 @@ public abstract class AbstractLibraryDialog extends JDialog implements Validator
 
     JLabel errorLabel = new JLabel();
     Box buttonBox = new Box(BoxLayout.X_AXIS);
-    JPanel content = new JPanel();
+    private JPanel content = new JPanel();
+    private final AbstractAction okAction;
 
     public AbstractLibraryDialog(String title) {
         super(MainFrame.getInstance(), title, true);
@@ -34,28 +35,38 @@ public abstract class AbstractLibraryDialog extends JDialog implements Validator
                 AbstractLibraryDialog.this.dispose();
             }
         }));
-        buttonBox.add(new JButton(new AbstractAction("OK") {
+        okAction = new AbstractAction("OK") {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 AbstractLibraryDialog.this.okAction();
                 AbstractLibraryDialog.this.dispose();
             }
-        }));
+        };
+        buttonBox.add(new JButton(okAction));
         add(errorLabel, BorderLayout.NORTH);
         add(content);
         add(buttonBox, BorderLayout.SOUTH);
         setLocation(MainFrame.getInstance().getLocation());
-        
+
     }
 
-    void error(String message) {
+    public void error(String message) {
         errorLabel.setText(message);
+        okAction.setEnabled(false);
 
     }
 
-    void clearError() {
+    public void clearError() {
         errorLabel.setText("");
+        okAction.setEnabled(true);
     }
-    
-    abstract void okAction();
+
+    public abstract void okAction();
+
+    /**
+     * @return the content
+     */
+    public JPanel getContent() {
+        return content;
+    }
 }

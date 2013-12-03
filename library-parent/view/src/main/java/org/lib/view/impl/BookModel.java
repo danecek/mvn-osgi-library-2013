@@ -27,12 +27,12 @@ public final class BookModel extends AbstractTableModel implements Refreshable {
     List<Book> books = new ArrayList<>();
 
     public BookModel() {
-        try {
-            refresh();
-            MainFrame.addRefreshable(this);
-        } catch (LibraryException ex) {
-            Logger.getLogger(BookModel.class.getName()).log(Level.SEVERE, null, ex);
-        }
+           MainFrame.addRefreshable(this);
+//        try {
+//            refresh();
+//        } catch (LibraryException ex) {
+//            Logger.getLogger(BookModel.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     Collection<Book> getBooks(int[] rows) {

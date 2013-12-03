@@ -4,11 +4,13 @@
  */
 package org.lib.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author danecek
  */
-public class Reader {
+public class Reader implements Serializable {
 
     public Reader(ReaderId id, String name, Address address) {
         this.id = id;

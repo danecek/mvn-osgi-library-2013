@@ -23,12 +23,12 @@ import org.lib.utils.LibraryException;
 public class ServerThread extends Thread {
 
     public ServerThread() {
-        setUncaughtExceptionHandler(new UncaughtExceptionHandler() {
-            @Override
-            public void uncaughtException(Thread thread, Throwable thrwbl) {
-                System.out.println("internal error!!!");
-            }
-        });
+//        setUncaughtExceptionHandler(new UncaughtExceptionHandler() {
+//            @Override
+//            public void uncaughtException(Thread thread, Throwable thrwbl) {
+//                System.out.println("internal error!!!");
+//            }
+//        });
     }
 
     @Override
@@ -37,8 +37,8 @@ public class ServerThread extends Thread {
             ServerSocket ss = new ServerSocket(3456);
             Logger.getLogger(ServerThread.class.getName()).log(Level.INFO, "waiting for client");
             try (Socket s = ss.accept();
-                    ObjectInputStream ois = new ObjectInputStream(s.getInputStream());
                     ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream())) {
+                    ObjectInputStream ois = new ObjectInputStream(s.getInputStream());
                 for (;;) {
                     Logger.getLogger(ServerThread.class.getName()).log(Level.INFO, "waiting for command");
 

@@ -4,11 +4,13 @@
  */
 package org.lib.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author danecek
  */
-public class AbstrId<T extends AbstrId<T>> implements Comparable<T> {
+public class AbstrId<T extends AbstrId<T>> implements Comparable<T>, Serializable{
 
     private final int id;
 
