@@ -4,7 +4,6 @@
  */
 package org.lib.business;
 
-import java.util.Arrays;
 import java.util.Collection;
 import org.lib.business.impl.LibraryFacadeDefault;
 import org.lib.model.Address;
