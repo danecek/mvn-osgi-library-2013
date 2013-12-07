@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -26,13 +27,14 @@ import org.lib.view.MainFrame;
 public abstract class AbstractLibraryDialog extends JDialog implements Validator {
 
     private JLabel errorLabel;
-    protected JPanel content = new JPanel();
+    private JPanel content = new JPanel();
+    private Action okAction;
 
     final JComponent createErrorPanel() {
         Box errPanel = new Box(BoxLayout.X_AXIS);
         int i = 5;
         errPanel.setBorder(BorderFactory.createEmptyBorder(i, i, i, i));
-        errPanel.add(errorLabel=new JLabel());
+        errPanel.add(errorLabel = new JLabel());
         return errPanel;
     }
 
@@ -48,7 +50,7 @@ public abstract class AbstractLibraryDialog extends JDialog implements Validator
             }
         }));
         btnPanel.add(Box.createHorizontalStrut(5));
-        btnPanel.add(new JButton(new AbstractAction("OK") {
+        btnPanel.add(new JButton(okAction = new AbstractAction("OK") {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 AbstractLibraryDialog.this.okAction();
@@ -82,4 +84,11 @@ public abstract class AbstractLibraryDialog extends JDialog implements Validator
     }
 
     public abstract void okAction();
+
+    /**
+     * @return the content
+     */
+    public JPanel getContent() {
+        return content;
+    }
 }

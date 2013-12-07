@@ -7,6 +7,7 @@ package org.lib.controller.dialogs;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import org.lib.utils.Validator;
 
 /**
  *
