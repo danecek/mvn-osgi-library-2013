@@ -18,3 +18,5 @@
 /library-parent/grizzlyserver/target/
 /library-parent/jaxbconnection/target/
 /library-parent/jaxbserver/target/
+/library-parent/xmlconnection/target/
+/library-parent/xmlserver/target/

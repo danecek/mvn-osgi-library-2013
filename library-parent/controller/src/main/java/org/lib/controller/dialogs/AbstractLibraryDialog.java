@@ -80,7 +80,6 @@ public abstract class AbstractLibraryDialog extends JDialog implements Validator
         Point loc = MainFrame.getInstance().getLocation();
         loc.translate(200, 100);
         setLocation(loc);
-
     }
 
     public void error(String message) {
