@@ -40,7 +40,7 @@ public abstract class ConnectionService {
 
     public abstract void disconnect();
 
-    public abstract Object send(LibraryCommand libraryCommand) throws LibraryException;
+    public abstract <T> T send(LibraryCommand libraryCommand) throws LibraryException;
 
     public abstract boolean isConnected();
 }

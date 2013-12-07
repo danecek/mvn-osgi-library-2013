@@ -3,6 +3,8 @@
  * and open the template in the editor.
  */
 package org.lib.integration.impl;
+
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -56,6 +58,6 @@ public final class ReaderDAOImpl implements ReaderDAO {
 
     @Override
     public Collection<Reader> getAll() throws LibraryException {
-        return readers.values();
+        return new ArrayList<>(readers.values());
     }
 }

@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.lib.connection;
+package org.lib.proxy;
 
 import java.awt.event.ActionEvent;
 import org.lib.controller.actions.AbstractLibraryAction;

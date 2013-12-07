@@ -12,10 +12,12 @@ import org.lib.model.Book;
 import org.lib.model.BookId;
 import org.lib.model.Reader;
 import org.lib.model.ReaderId;
+import org.lib.protocol.Books;
 import org.lib.protocol.CreateBook;
 import org.lib.protocol.DeleteBooks;
 import org.lib.protocol.GetBooks;
 import org.lib.protocol.GetReaders;
+import org.lib.protocol.Readers;
 import org.lib.utils.LibraryException;
 
 /**
@@ -34,7 +36,7 @@ public class LibraryFacadeProxy extends LibraryFacade {
 
     @Override
     public Collection<Reader> getReaders() throws LibraryException {
-        return (Collection<Reader>) ConnectionService.getDefault().send(new GetReaders());
+        return ConnectionService.getDefault().<Readers>send(new GetReaders()).getReaders();
     }
 
     @Override
@@ -54,8 +56,7 @@ public class LibraryFacadeProxy extends LibraryFacade {
 
     @Override
     public Collection<Book> getBooks() throws LibraryException {
-        return (Collection<Book>) ConnectionService.getDefault().send(new GetBooks());
-
+        return ConnectionService.getDefault().<Books>send(new GetBooks()).getBooks();
     }
 
     @Override

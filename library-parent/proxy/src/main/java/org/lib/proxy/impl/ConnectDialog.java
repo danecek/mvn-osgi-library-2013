@@ -41,6 +41,7 @@ public class ConnectDialog extends AbstractLibraryDialog {
         }
     }
 
+    @Override
     public boolean validateDialog() {
         try {
             InetAddress.getByName(host.getText());

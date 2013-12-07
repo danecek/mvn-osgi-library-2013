@@ -4,6 +4,7 @@
  */
 package org.lib.integration.impl;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -57,6 +58,6 @@ public final class BookDAOImpl implements BookDAO {
 
     @Override
     public Collection<Book> getAll() throws LibraryException {
-        return books.values();
+        return new ArrayList<Book>(books.values());
     }
 }
