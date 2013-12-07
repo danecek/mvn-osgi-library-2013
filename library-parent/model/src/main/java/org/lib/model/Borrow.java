@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author danecek
  */
-public class Borrow  implements Serializable {
+public class Borrow implements Serializable {
 
     ReaderId readerId;
     BookId bookId;

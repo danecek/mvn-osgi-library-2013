@@ -45,8 +45,8 @@ public class ServerThread extends Thread {
             ServerSocket ss = new ServerSocket(LibraryCommand.PORT);
             Logger.getLogger(ServerThread.class.getName()).log(Level.INFO, "waiting for client");
             try (Socket s = ss.accept();
-                    ObjectInputStream ois = new ObjectInputStream(s.getInputStream());
                     ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream())) {
+                    ObjectInputStream ois = new ObjectInputStream(s.getInputStream());
                 for (;;) {
                     Logger.getLogger(ServerThread.class.getName()).log(Level.INFO, "waiting for command");
                     LibraryCommand comm = (LibraryCommand) ois.readObject();

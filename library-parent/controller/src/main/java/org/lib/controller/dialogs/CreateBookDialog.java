@@ -22,9 +22,9 @@ public final class CreateBookDialog extends AbstractLibraryDialog {
     public CreateBookDialog() {
         super("Create Book"); // todo
         title = new ValidatedTF(this);
-        content.setLayout(new GridLayout(0, 2));
-        content.add(new JLabel("Title: "));
-        content.add(title);
+        getContent().setLayout(new GridLayout(0, 2));
+        getContent().add(new JLabel("Title:"));
+        getContent().add(title);
         validateDialog();
         pack();
         setVisible(true);
@@ -51,4 +51,6 @@ public final class CreateBookDialog extends AbstractLibraryDialog {
             MainFrame.getInstance().showError(le);
         }
     }
+
+
 }

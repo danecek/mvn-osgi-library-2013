@@ -98,17 +98,14 @@ public class MainFrame extends JFrame {
         rf.add(r);
     }
 
-    public void addActionToMenu(LibraryAction libraryAction) {
-        actions.add(libraryAction);
-        JMenuBar mnuBar = getJMenuBar();
-        JMenu mnu;
-        actions.add(libraryAction);
-        for (int i = 0; i < mnuBar.getMenuCount(); i++) {
-            mnu = mnuBar.getMenu(i);
-            String menuName = mnu.getText();
-            String actionMenu = libraryAction.getMenuName();
-            if (menuName.equals(actionMenu)) {
-                mnu.add((Action) libraryAction);
+    public void addLibraryAction(SetEnable te) {
+        tec.add(te);
+        JMenu mn;
+        JMenuBar mnb = getJMenuBar();
+        for (int i = 0; i < mnb.getMenuCount(); i++) {
+            mn = mnb.getMenu(i);
+            if (mn.getText().equals(te.getMenuName())) {
+                mn.add((Action) te);
                 return;
             }
         }

@@ -78,6 +78,7 @@ public abstract class AbstractLibraryDialog extends JDialog implements Validator
 
     public void clearError() {
         errorLabel.setText("");
+        okAction.setEnabled(true);
     }
 
     public abstract void okAction();

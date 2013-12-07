@@ -4,21 +4,18 @@
  */
 package org.lib.proxy.impl;
 
+import com.sun.jndi.cosnaming.IiopUrl.Address;
+import java.awt.print.Book;
+import java.io.Reader;
+import java.sql.Connection;
 import java.util.Collection;
 import org.lib.business.LibraryFacade;
 import org.lib.connection.ConnectionService;
-import org.lib.model.Address;
-import org.lib.model.Book;
 import org.lib.model.BookId;
-import org.lib.model.Reader;
 import org.lib.model.ReaderId;
 import org.lib.protocol.Books;
 import org.lib.protocol.CreateBook;
-import org.lib.protocol.DeleteBooks;
-import org.lib.protocol.GetBooks;
-import org.lib.protocol.GetReaders;
-import org.lib.protocol.Readers;
-import org.lib.utils.LibraryException;
+
 
 /**
  *

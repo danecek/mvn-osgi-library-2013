@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.apache.derby.jdbc.EmbeddedDriver;
 import org.lib.integration.AbstractDAOFactory;
 import org.lib.integration.BookDAO;
 import org.lib.integration.BorrowDAO;
