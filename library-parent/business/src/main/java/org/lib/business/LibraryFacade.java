@@ -4,6 +4,7 @@
  */
 package org.lib.business;
 
+import java.util.Arrays;
 import java.util.Collection;
 import org.lib.business.impl.LibraryFacadeDefault;
 import org.lib.model.Address;
@@ -41,7 +42,7 @@ public abstract class LibraryFacade {
         st = aSt;
     }
 
-    public abstract Reader createReader(String name, Address address) throws LibraryException;
+    public abstract void createReader(String name, Address address) throws LibraryException;
 
     public abstract Collection<Reader> getReaders() throws LibraryException;
 
@@ -49,13 +50,13 @@ public abstract class LibraryFacade {
 
     public abstract void deleteReader(ReaderId id) throws LibraryException;
 
-    public abstract Book createBook(String title) throws LibraryException;
+    public abstract BookId createBook(String title) throws LibraryException;
 
     public abstract void updateBook(Book book) throws LibraryException;
 
     public abstract Collection<Book> getBooks() throws LibraryException;
 
-    public abstract void deleteBook(BookId id) throws LibraryException;
+    public abstract void deleteBooks(Collection<BookId> bookIds) throws LibraryException;
 
     public abstract void returnBooks(ReaderId id, Collection<Book> books) throws LibraryException;
 

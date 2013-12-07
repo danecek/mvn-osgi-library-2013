@@ -4,8 +4,8 @@
  */
 package org.lib.view;
 
-import java.awt.Menu;
-import java.awt.MenuBar;
+import org.lib.utils.LibraryAction;
+import org.lib.view.impl.MainPanel;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -34,15 +34,13 @@ public class MainFrame extends JFrame {
 
     private static MainFrame instance;
     static Collection<Refreshable> rf = new ArrayList<>();
-    Collection<SetEnable> tec = new ArrayList<>();
+    Collection<LibraryAction> actions = new ArrayList<>();
 
-    /**
-     * @return the instance
-     */
     public static MainFrame getInstance() {
         if (instance == null) {
             instance = new MainFrame();
         }
+
         return instance;
     }
     private BundleContext context;
@@ -62,7 +60,9 @@ public class MainFrame extends JFrame {
 
     public MainFrame() {
         super(Messages.Main_Frame.cm());
-        setJMenuBar(menuBar = new JMenuBar());
+        menuBar = new JMenuBar();
+        menuBar.add(new JMenu("File"));  //
+        setJMenuBar(menuBar);
 
         add(mainPanel = new MainPanel());
 
@@ -72,12 +72,10 @@ public class MainFrame extends JFrame {
                 exit();
             }
         });
-
         setBounds(300, 300, 800, 400);
-
     }
 
-    public void showError(LibraryException ex) {
+    public void showError(Exception ex) {
         showError(ex.toString());
     }
 
@@ -94,38 +92,40 @@ public class MainFrame extends JFrame {
             }
         }
         actionsNotif();
-
     }
 
     public static void addRefreshable(Refreshable r) {
         rf.add(r);
     }
 
-    public void addTestEnable(SetEnable te) {
-        tec.add(te);
-        JMenu mn;
-        JMenuBar mnb = getJMenuBar();
-        for (int i = 0; i < mnb.getMenuCount(); i++) {
-            mn = mnb.getMenu(i);
-            if (mn.getName().equals(te.getMenuName())) {
-                mn.add((Action) te);
+    public void addActionToMenu(LibraryAction libraryAction) {
+        actions.add(libraryAction);
+        JMenuBar mnuBar = getJMenuBar();
+        JMenu mnu;
+        actions.add(libraryAction);
+        for (int i = 0; i < mnuBar.getMenuCount(); i++) {
+            mnu = mnuBar.getMenu(i);
+            String menuName = mnu.getText();
+            String actionMenu = libraryAction.getMenuName();
+            if (menuName.equals(actionMenu)) {
+                mnu.add((Action) libraryAction);
                 return;
             }
         }
-        mn = new JMenu(te.getMenuName());
-        mnb.add(mn);
-        mn.add((Action) te);
-        
+        mnu = new JMenu(libraryAction.getMenuName());
+        mnuBar.add(mnu);
+        mnu.add((Action) libraryAction);
+
 
     }
 
-    public Book getSelectedBook() {
-        return mainPanel.getSelectedBook();
+    public Collection<Book> getSelectedBooks() {
+        return mainPanel.getSelectedBooks();
     }
 
     public void actionsNotif() {
-        for (SetEnable te : tec) {
-            te.setEnable();
+        for (LibraryAction te : actions) {
+            te.setEnabled();
         }
     }
 

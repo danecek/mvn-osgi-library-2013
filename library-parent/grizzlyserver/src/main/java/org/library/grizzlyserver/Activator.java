@@ -1,16 +1,17 @@
-package org.lib.model;
+package org.library.grizzlyserver;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
 public class Activator implements BundleActivator {
 
     public void start(BundleContext context) throws Exception {
-        // TODO add activation code here
+        Logger.getLogger(getClass().getName()).log(Level.INFO, getClass().getName());
     }
 
     public void stop(BundleContext context) throws Exception {
         // TODO add deactivation code here
     }
-
 }

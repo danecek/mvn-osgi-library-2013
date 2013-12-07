@@ -2,9 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.lib.proxy.impl;
+package org.lib.connection;
 
 import java.awt.event.ActionEvent;
+import org.lib.connection.impl.ConnectionDialog;
 import org.lib.controller.actions.AbstractLibraryAction;
 
 /**
@@ -17,7 +18,15 @@ public class ConnectAction extends AbstractLibraryAction {
         super("Connect", "Connection");
     }
 
+    @Override
     public void actionPerformed(ActionEvent ae) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        new ConnectionDialog();
     }
+
+    @Override
+    public void setEnabled() {
+      setEnabled(!ConnectionService.getDefault().isConnected());
+    }
+    
+    
 }

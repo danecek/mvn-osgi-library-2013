@@ -43,7 +43,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Bundle-Activator>org.lib.model.Activator</Bundle-Activator>
+                        <Bundle-Activator>org.lib.model.ModelActivator</Bundle-Activator>
                         <Export-Package >org.lib.model</Export-Package>
                         <Private-Package>org.lib.model.*</Private-Package>
                     </instructions>

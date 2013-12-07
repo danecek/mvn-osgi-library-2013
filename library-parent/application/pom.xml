@@ -19,6 +19,12 @@
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>derbydb</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.osgi</groupId>
             <artifactId>org.osgi.core</artifactId>
@@ -31,6 +37,18 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
+            <artifactId>integration</artifactId>
+            <groupId>org.lib</groupId>
+            <type>jar</type>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.lib</groupId>
+            <artifactId>business</artifactId>
+            <type>jar</type>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>view</artifactId>
             <version>${project.version}</version>
@@ -41,9 +59,37 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
+            <artifactId>model</artifactId>
+            <groupId>org.lib</groupId>
+            <type>jar</type>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <artifactId>protocol</artifactId>
+            <groupId>org.lib</groupId>
+            <type>jar</type>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+            <version>10.10.1.1</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>connection</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>proxy</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.library</groupId>
+            <artifactId>jaxbconnection</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
@@ -56,7 +102,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Bundle-Activator>org.lib.application.Activator</Bundle-Activator>
+                        <Bundle-Activator>org.lib.application.ApplicationActivator</Bundle-Activator>
                         <Export-Package />
                     </instructions>
                 </configuration>

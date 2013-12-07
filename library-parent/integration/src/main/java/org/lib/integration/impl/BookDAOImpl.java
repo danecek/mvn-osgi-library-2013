@@ -33,10 +33,11 @@ public class BookDAOImpl implements BookDAO {
         }
     }
 
-    public Book create(String title) throws LibraryException {
-        Book book = new Book(new BookId(++keyCount), title);
+    public BookId create(String title) throws LibraryException {
+        BookId id = new BookId(++keyCount);
+        Book book = new Book(id, title);
         books.put(book.getId(), book);
-        return book;
+        return id;
     }
 
     public void delete(BookId id) throws LibraryException {

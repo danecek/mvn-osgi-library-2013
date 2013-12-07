@@ -5,6 +5,7 @@
 package org.lib.controller.dialogs;
 
 import java.awt.GridLayout;
+import org.lib.utils.ValidatedTF;
 import javax.swing.JLabel;
 import org.lib.business.LibraryFacade;
 import org.lib.utils.LibraryException;
@@ -16,13 +17,13 @@ import org.lib.view.MainFrame;
  */
 public final class CreateBookDialog extends AbstractLibraryDialog {
 
-    ValidatedTF title;
+    private ValidatedTF title;
 
     public CreateBookDialog() {
         super("Create Book"); // todo
         title = new ValidatedTF(this);
         content.setLayout(new GridLayout(0, 2));
-        content.add(new JLabel("Title:"));
+        content.add(new JLabel("Title: "));
         content.add(title);
         validateDialog();
         pack();
@@ -42,7 +43,7 @@ public final class CreateBookDialog extends AbstractLibraryDialog {
     }
 
     @Override
-    void okAction() {
+    public void okAction() {
         try {
             LibraryFacade.getDefault().createBook(title.getText());
             MainFrame.getInstance().refresh();

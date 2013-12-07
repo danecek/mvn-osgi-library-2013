@@ -2,15 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.lib.view;
+package org.lib.utils;
 
 /**
  *
  * @author danecek
  */
-public interface SetEnable {
-
-    void setEnable();
-
-     String getMenuName();
+public interface Validator {
+    boolean validateDialog();
 }

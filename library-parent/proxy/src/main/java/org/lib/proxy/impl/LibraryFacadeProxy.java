@@ -6,12 +6,18 @@ package org.lib.proxy.impl;
 
 import java.util.Collection;
 import org.lib.business.LibraryFacade;
+import org.lib.connection.ConnectionService;
 import org.lib.model.Address;
 import org.lib.model.Book;
 import org.lib.model.BookId;
 import org.lib.model.Reader;
 import org.lib.model.ReaderId;
+import org.lib.protocol.Books;
 import org.lib.protocol.CreateBook;
+import org.lib.protocol.DeleteBooks;
+import org.lib.protocol.GetBooks;
+import org.lib.protocol.GetReaders;
+import org.lib.protocol.Readers;
 import org.lib.utils.LibraryException;
 
 /**
@@ -20,14 +26,19 @@ import org.lib.utils.LibraryException;
  */
 public class LibraryFacadeProxy extends LibraryFacade {
 
+    public LibraryFacadeProxy() {
+    }
+
     @Override
-    public Reader createReader(String name, Address address) throws LibraryException {
+    public void createReader(String name, Address address) throws LibraryException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public Collection<Reader> getReaders() throws LibraryException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Readers readers = (Readers) ConnectionService.getDefault().send(new GetReaders());
+        return readers.getReaders();
+
     }
 
     @Override
@@ -41,8 +52,8 @@ public class LibraryFacadeProxy extends LibraryFacade {
     }
 
     @Override
-    public Book createBook(String title) throws LibraryException {
-        return (Book) Connection.getInstance().send(new CreateBook(title));
+    public BookId createBook(String title) throws LibraryException {
+        return (BookId) ConnectionService.getDefault().send(new CreateBook(title));
     }
 
     @Override
@@ -52,12 +63,13 @@ public class LibraryFacadeProxy extends LibraryFacade {
 
     @Override
     public Collection<Book> getBooks() throws LibraryException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Books books = (Books) ConnectionService.getDefault().send(new GetBooks());
+        return books.getBooks();
     }
 
     @Override
-    public void deleteBook(BookId id) throws LibraryException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deleteBooks(Collection<BookId> bookIds) throws LibraryException {
+        ConnectionService.getDefault().send(new DeleteBooks(bookIds));
     }
 
     @Override

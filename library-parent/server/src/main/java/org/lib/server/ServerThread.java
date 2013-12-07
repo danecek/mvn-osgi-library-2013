@@ -12,6 +12,8 @@ import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.lib.business.LibraryFacade;
+import org.lib.model.Book;
+import org.lib.model.BookId;
 import org.lib.protocol.Disconnect;
 import org.lib.protocol.LibraryCommand;
 import org.lib.utils.LibraryException;
@@ -22,26 +24,31 @@ import org.lib.utils.LibraryException;
  */
 public class ServerThread extends Thread {
 
+    static Class[] preloaded = {
+        Book.class,
+        BookId.class
+    };
+
     public ServerThread() {
-        setUncaughtExceptionHandler(new UncaughtExceptionHandler() {
-            @Override
-            public void uncaughtException(Thread thread, Throwable thrwbl) {
-                System.out.println("internal error!!!");
-            }
-        });
+        //   new Book(new BookId(1), null);
+//        setUncaughtExceptionHandler(new UncaughtExceptionHandler() {
+//            @Override
+//            public void uncaughtException(Thread thread, Throwable thrwbl) {
+//                System.out.println("internal error!!!");
+//            }
+//        });
     }
 
     @Override
     public void run() {
         try {
-            ServerSocket ss = new ServerSocket(3456);
+            ServerSocket ss = new ServerSocket(LibraryCommand.PORT);
             Logger.getLogger(ServerThread.class.getName()).log(Level.INFO, "waiting for client");
             try (Socket s = ss.accept();
                     ObjectInputStream ois = new ObjectInputStream(s.getInputStream());
                     ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream())) {
                 for (;;) {
                     Logger.getLogger(ServerThread.class.getName()).log(Level.INFO, "waiting for command");
-
                     LibraryCommand comm = (LibraryCommand) ois.readObject();
                     Logger.getLogger(ServerThread.class.getName()).log(Level.INFO, "command: " + comm);
                     if (comm instanceof Disconnect) {
@@ -52,11 +59,10 @@ public class ServerThread extends Thread {
                         result = comm.execute(LibraryFacade.getDefault());
                     } catch (LibraryException ex) {
                         result = ex;
-
                     }
+                    Logger.getLogger(ServerThread.class.getName()).log(Level.INFO, "result: " + result);
                     oos.writeObject(result);
                     oos.flush();
-
                 }
 
             } catch (ClassNotFoundException ex) {

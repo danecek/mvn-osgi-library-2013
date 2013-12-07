@@ -15,7 +15,7 @@ import org.lib.utils.LibraryException;
  */
 public interface BookDAO {
     
-    Book create(String title) throws LibraryException;
+    BookId create(String title) throws LibraryException;
     void delete(BookId id) throws LibraryException;
     void update(Book reader) throws LibraryException;
     Book find(BookId id) throws LibraryException;

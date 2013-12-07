@@ -2,15 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.lib.view;
+package org.lib.view.impl;
 
 import java.awt.BorderLayout;
+import java.util.Collection;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
-import javax.swing.JTabbedPane;
 import org.lib.model.Book;
-import org.lib.view.impl.BookPanel;
-import org.lib.view.impl.ReaderPanel;
 
 /**
  *
@@ -32,7 +30,7 @@ public class MainPanel extends JPanel {
 
     }
 
-    Book getSelectedBook() {
-        return bookPanel.getSelectedBook();
+    public Collection<Book> getSelectedBooks() {
+        return bookPanel.getSelectedBooks();
     }
 }

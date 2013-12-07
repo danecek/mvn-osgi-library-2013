@@ -36,7 +36,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Bundle-Activator>org.lib.utils.Activator</Bundle-Activator>
+                        <Bundle-Activator>org.lib.utils.UtilsActivator</Bundle-Activator>
                         <Export-Package >org.lib.utils</Export-Package>
                         <Private-Package>org.lib.utils.*</Private-Package>
                     </instructions>

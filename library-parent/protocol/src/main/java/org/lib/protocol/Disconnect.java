@@ -4,6 +4,7 @@
  */
 package org.lib.protocol;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import org.lib.business.LibraryFacade;
 import org.lib.utils.LibraryException;
 
@@ -11,7 +12,11 @@ import org.lib.utils.LibraryException;
  *
  * @author danecek
  */
+@XmlRootElement
 public class Disconnect extends LibraryCommand {
+
+    public Disconnect() {
+    }
 
     @Override
     public Object execute(LibraryFacade libraryFacade) throws LibraryException {

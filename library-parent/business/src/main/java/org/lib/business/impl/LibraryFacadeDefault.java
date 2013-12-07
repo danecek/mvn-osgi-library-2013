@@ -21,8 +21,8 @@ import org.lib.utils.LibraryException;
 public class LibraryFacadeDefault extends LibraryFacade {
 
     @Override
-    public Reader createReader(String name, Address address) throws LibraryException {
-        return AbstractDAOFactory.getDefault().getReaderDAO().create(name, address);
+    public void createReader(String name, Address address) throws LibraryException {
+        AbstractDAOFactory.getDefault().getReaderDAO().create(name, address);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class LibraryFacadeDefault extends LibraryFacade {
     }
 
     @Override
-    public Book createBook(String title) throws LibraryException {
+    public BookId createBook(String title) throws LibraryException {
         return AbstractDAOFactory.getDefault().getBookDAO().create(title);
     }
 
@@ -56,8 +56,10 @@ public class LibraryFacadeDefault extends LibraryFacade {
     }
 
     @Override
-    public void deleteBook(BookId id) throws LibraryException {
-        AbstractDAOFactory.getDefault().getBookDAO().delete(id);
+    public void deleteBooks(Collection<BookId> bookIds) throws LibraryException {
+        for (BookId id : bookIds) {
+            AbstractDAOFactory.getDefault().getBookDAO().delete(id);
+        }
     }
 
     @Override

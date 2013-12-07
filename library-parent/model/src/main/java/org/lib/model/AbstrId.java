@@ -4,13 +4,18 @@
  */
 package org.lib.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author danecek
  */
-public class AbstrId<T extends AbstrId<T>> implements Comparable<T> {
+public class AbstrId<T extends AbstrId<T>> implements Comparable<T>, Serializable {
 
-    private final int id;
+    private int id;
+
+    public AbstrId() {
+    }
 
     public AbstrId(int id) {
         this.id = id;
@@ -31,12 +36,13 @@ public class AbstrId<T extends AbstrId<T>> implements Comparable<T> {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 53 * hash + this.id;
+        hash = 53 * hash + this.getId();
         return hash;
     }
 
+    @Override
     public int compareTo(T t) {
-        return id - t.getId();
+        return getId() - t.getId();
     }
 
     /**
@@ -48,6 +54,13 @@ public class AbstrId<T extends AbstrId<T>> implements Comparable<T> {
 
     @Override
     public String toString() {
-        return Integer.toString(id);
+        return Integer.toString(getId());
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
     }
 }

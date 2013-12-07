@@ -4,11 +4,13 @@
  */
 package org.lib.view.impl;
 
+import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
@@ -27,12 +29,12 @@ public final class BookModel extends AbstractTableModel implements Refreshable {
     List<Book> books = new ArrayList<>();
 
     public BookModel() {
-        try {
-            refresh();
+//        try {
+//            refresh();
             MainFrame.addRefreshable(this);
-        } catch (LibraryException ex) {
-            Logger.getLogger(BookModel.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        } catch (LibraryException ex) {
+//            Logger.getLogger(BookModel.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     Collection<Book> getBooks(int[] rows) {
@@ -49,8 +51,8 @@ public final class BookModel extends AbstractTableModel implements Refreshable {
         books = new ArrayList<>(rs);
         Collections.sort(books, new Comparator<Book>() {
             @Override
-            public int compare(Book t, Book t1) {
-                return t.getTitle().compareTo(t1.getTitle()); // Lepe Collator 
+            public int compare(Book b1, Book b2) {
+                return Collator.getInstance(new Locale("cz")).compare(b1.getTitle(), b2.getTitle());
             }
         });
         fireTableDataChanged();

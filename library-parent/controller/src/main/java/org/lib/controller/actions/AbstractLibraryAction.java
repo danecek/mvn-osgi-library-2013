@@ -5,15 +5,14 @@
 package org.lib.controller.actions;
 
 import javax.swing.AbstractAction;
-import org.lib.view.MainFrame;
-import org.lib.view.SetEnable;
+import org.lib.utils.LibraryAction;
 
 /**
  *
  * @author danecek
  */
 public abstract class AbstractLibraryAction extends AbstractAction implements
-        SetEnable {
+        LibraryAction {
 
     private String menuName;
 
@@ -23,12 +22,13 @@ public abstract class AbstractLibraryAction extends AbstractAction implements
     }
 
     @Override
-    public void setEnable() {
+    public void setEnabled() {
     }
 
     /**
      * @return the menuName
      */
+    @Override
     public String getMenuName() {
         return menuName;
     }

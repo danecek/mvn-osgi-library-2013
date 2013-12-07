@@ -5,6 +5,7 @@
 package org.lib.view.impl;
 
 import java.awt.BorderLayout;
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -17,18 +18,21 @@ import org.lib.model.Reader;
  */
 public class ReaderPanel extends JPanel {
 
-    JTable tbl;
-    ReaderModel rm; 
+    private JTable tbl;
+    private ReaderModel rm;
+
     public ReaderPanel() {
+        setBorder(BorderFactory.createTitledBorder("Readers")); //todo
         setLayout(new BorderLayout());
         add(new JScrollPane(tbl = new JTable(rm = new ReaderModel())));
         tbl.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
-    
+
     Reader getSelectedReader() {
         int sr = tbl.getSelectedRow();
-        if (sr == -1) return null;
+        if (sr == -1) {
+            return null;
+        }
         return rm.getReader(sr);
-        
     }
 }

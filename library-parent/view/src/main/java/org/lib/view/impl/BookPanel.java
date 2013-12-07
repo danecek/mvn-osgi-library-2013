@@ -5,8 +5,8 @@
 package org.lib.view.impl;
 
 import java.awt.BorderLayout;
-import java.util.ArrayList;
 import java.util.Collection;
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -22,10 +22,11 @@ import org.lib.view.MainFrame;
  */
 public class BookPanel extends JPanel {
 
-    JTable tbl;
-    BookModel bm;
+    private JTable tbl;
+    private BookModel bm;
 
     public BookPanel() {
+        setBorder(BorderFactory.createTitledBorder("Books")); //todo
         setLayout(new BorderLayout());
         add(new JScrollPane(tbl = new JTable(bm = new BookModel())));
         ListSelectionModel sm = tbl.getSelectionModel();
@@ -39,17 +40,8 @@ public class BookPanel extends JPanel {
 
     }
 
-    Collection<Book> getSelectedBooks() {
+    public Collection<Book> getSelectedBooks() {
         int[] sr = tbl.getSelectedRows();
         return bm.getBooks(sr);
-
-    }
-
-    public Book getSelectedBook() {
-        int row = tbl.getSelectedRow();
-        if (row == -1) {
-            return null;
-        }
-        return new ArrayList<Book>(bm.getBooks(new int[]{row})).get(0);
     }
 }

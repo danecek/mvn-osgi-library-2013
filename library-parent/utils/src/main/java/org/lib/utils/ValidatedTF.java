@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.lib.controller.dialogs;
+package org.lib.utils;
 
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
@@ -15,6 +15,15 @@ import javax.swing.event.DocumentListener;
 public class ValidatedTF extends JTextField {
 
     public ValidatedTF(final Validator validator) {
+        this(validator, "");
+    }
+
+    public ValidatedTF(final Validator validator, String init) {
+        this(validator, init, 5);
+    }
+
+    public ValidatedTF(final Validator validator, String init, int cols) {
+        super(init, cols);
         getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent de) {

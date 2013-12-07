@@ -46,7 +46,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Bundle-Activator>org.lib.controller.Activator</Bundle-Activator>
+                        <Bundle-Activator>org.lib.controller.ControllerActivator</Bundle-Activator>
                         <Export-Package >org.lib.controller,org.lib.controller.actions,org.lib.controller.dialogs</Export-Package>
                     </instructions>
                 </configuration>

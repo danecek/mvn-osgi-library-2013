@@ -50,6 +50,11 @@
             <artifactId>controller</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>connection</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -61,7 +66,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Bundle-Activator>org.lib.proxy.Activator</Bundle-Activator>
+                        <Bundle-Activator>org.lib.proxy.ProxyActivator</Bundle-Activator>
                         <Export-Package />
                     </instructions>
                 </configuration>

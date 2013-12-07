@@ -4,14 +4,19 @@
  */
 package org.lib.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author danecek
  */
-public class Book {
+public class Book  implements Serializable {
 
     private BookId id;
     private String title;
+
+    public Book() {
+    }
 
     public Book(BookId id, String title) {
         this.id = id;
@@ -30,5 +35,19 @@ public class Book {
      */
     public String getTitle() {
         return title;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(BookId id) {
+        this.id = id;
+    }
+
+    /**
+     * @param title the title to set
+     */
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

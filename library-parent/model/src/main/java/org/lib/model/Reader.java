@@ -4,11 +4,16 @@
  */
 package org.lib.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author danecek
  */
-public class Reader {
+public class Reader  implements Serializable  {
+
+    public Reader() {
+    }
 
     public Reader(ReaderId id, String name, Address address) {
         this.id = id;
@@ -38,5 +43,26 @@ public class Reader {
      */
     public Address getAddress() {
         return address;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(ReaderId id) {
+        this.id = id;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @param address the address to set
+     */
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

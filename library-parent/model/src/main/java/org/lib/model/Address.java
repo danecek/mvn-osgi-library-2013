@@ -4,13 +4,18 @@
  */
 package org.lib.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author danecek
  */
-public class Address {
+public class Address implements Serializable {
 
     private String address;
+
+    public Address() {
+    }
 
     public Address(String address) {
         this.address = address;
