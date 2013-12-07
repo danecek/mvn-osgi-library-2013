@@ -75,7 +75,7 @@ public class DerbyReaderDAO implements ReaderDAO {
     public Collection<Reader> getAll() throws LibraryException {
         try {
             ResultSet rs = findAllPs.executeQuery();
-            ArrayList<Reader> readers = new ArrayList<Reader>();
+            ArrayList<Reader> readers = new ArrayList<>();
             while (rs.next()) {
                 readers.add(new Reader(new ReaderId(rs.getInt(1)), rs.getString(2), new Address(rs.getString(3))));
             }
@@ -85,6 +85,7 @@ public class DerbyReaderDAO implements ReaderDAO {
         }
     }
 
+    @Override
     public void update(Reader reader) throws LibraryException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

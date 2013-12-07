@@ -4,7 +4,6 @@
  */
 package org.lib.integration.impl;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -19,10 +18,10 @@ import org.lib.utils.LibraryException;
  *
  * @author danecek
  */
-public class BookDAOImpl implements BookDAO {
+public final class BookDAOImpl implements BookDAO {
 
     private static int keyCount;
-    Map<BookId, Book> books = new ConcurrentHashMap<BookId, Book>();
+    Map<BookId, Book> books = new ConcurrentHashMap<>();
 
     public BookDAOImpl() {
         try {
@@ -33,6 +32,7 @@ public class BookDAOImpl implements BookDAO {
         }
     }
 
+    @Override
     public BookId create(String title) throws LibraryException {
         BookId id = new BookId(++keyCount);
         Book book = new Book(id, title);
@@ -40,19 +40,23 @@ public class BookDAOImpl implements BookDAO {
         return id;
     }
 
+    @Override
     public void delete(BookId id) throws LibraryException {
         books.remove(id);
     }
 
+    @Override
     public void update(Book reader) throws LibraryException {
         books.put(reader.getId(), reader);
     }
 
+    @Override
     public Book find(BookId id) throws LibraryException {
         return books.get(id);
     }
 
+    @Override
     public Collection<Book> getAll() throws LibraryException {
-        return new ArrayList<Book>(books.values());
+        return books.values();
     }
 }

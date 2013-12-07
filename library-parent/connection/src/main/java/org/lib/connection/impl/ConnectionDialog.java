@@ -26,11 +26,11 @@ public final class ConnectionDialog extends AbstractLibraryDialog {
 
     public ConnectionDialog() {
         super("Connection Dialog");
-        content.setLayout(new GridLayout(2, 2));
-        content.add(new JLabel("Host: "));
-        content.add(host = new ValidatedTF(this, "localhost"));
-        content.add(new JLabel("Port: "));
-        content.add(port = new ValidatedTF(this, Integer.toString(LibraryCommand.PORT)));
+        getContent().setLayout(new GridLayout(2, 2));
+        getContent().add(new JLabel("Host: "));
+        getContent().add(host = new ValidatedTF(this, "localhost"));
+        getContent().add(new JLabel("Port: "));
+        getContent().add(port = new ValidatedTF(this, Integer.toString(LibraryCommand.PORT)));
         validateDialog();
         pack();
         setVisible(true);

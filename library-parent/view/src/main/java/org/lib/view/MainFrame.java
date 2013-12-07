@@ -98,7 +98,7 @@ public class MainFrame extends JFrame {
         rf.add(r);
     }
 
-    public void addLibraryAction(LibraryAction libraryAction) {
+    public void addActionToMenu(LibraryAction libraryAction) {
         actions.add(libraryAction);
         JMenu mnu;
         JMenuBar mnuBar = getJMenuBar();

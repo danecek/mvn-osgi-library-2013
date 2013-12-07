@@ -4,11 +4,9 @@
  */
 package org.lib.business;
 
-import java.util.Arrays;
 import java.util.Collection;
 import org.lib.model.Address;
 import org.lib.model.Reader;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -25,7 +23,7 @@ public class LibraryFacadeTest {
         LibraryFacade.getDefault().createReader("Novak", new Address("Praha"));
         LibraryFacade.getDefault().createReader("Svoboda", new Address("Praha"));
         Collection<Reader> readers = LibraryFacade.getDefault().getReaders();
-      //  assertTrue(readers.containsAll(Arrays.asList(novak, svoboda)));
+        //  assertTrue(readers.containsAll(Arrays.asList(novak, svoboda)));
 
     }
 }

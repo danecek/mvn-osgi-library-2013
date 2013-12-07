@@ -14,3 +14,7 @@
 /library-parent/stream/nbproject/private/
 /library-parent/controller/target/
 /library-parent/derbydb/target/
+/library-parent/connection/target/
+/library-parent/grizzlyserver/target/
+/library-parent/jaxbconnection/target/
+/library-parent/jaxbserver/target/

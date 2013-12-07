@@ -3,8 +3,6 @@
  * and open the template in the editor.
  */
 package org.lib.integration.impl;
-
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -23,7 +21,7 @@ import org.lib.utils.LibraryException;
 public final class ReaderDAOImpl implements ReaderDAO {
 
     private static int keyCount;
-    Map<ReaderId, Reader> readers = new ConcurrentHashMap<ReaderId, Reader>();
+    Map<ReaderId, Reader> readers = new ConcurrentHashMap<>();
 
     public ReaderDAOImpl() {
         try {
@@ -34,25 +32,30 @@ public final class ReaderDAOImpl implements ReaderDAO {
         }
     }
 
+    @Override
     public void create(String name, Address address) throws LibraryException {
         Reader r = new Reader(new ReaderId(++keyCount), name, address);
         readers.put(r.getId(), r);
-       // return r;
+        // return r;
     }
 
+    @Override
     public void delete(ReaderId id) throws LibraryException {
         readers.remove(id);
     }
 
+    @Override
     public void update(Reader reader) throws LibraryException {
         readers.put(reader.getId(), reader);
     }
 
+    @Override
     public Reader find(ReaderId id) throws LibraryException {
         return readers.get(id);
     }
 
+    @Override
     public Collection<Reader> getAll() throws LibraryException {
-        return new ArrayList<Reader>(readers.values());
+        return readers.values();
     }
 }

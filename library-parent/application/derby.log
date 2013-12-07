@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Tue Dec 03 20:47:30 CET 2013:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.1.1 - (1458268): instance a816c00e-0142-ba00-49e3-0000031bfc48 
-on database directory /home/danecek/libraryDB with class loader org.apache.felix.framework.BundleWiringImpl@32e3e421 
+Sat Dec 07 16:12:35 CET 2013:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.1.1 - (1458268): instance a816c00e-0142-cd9e-05dc-000003037630 
+on database directory /home/danecek/libraryDB with class loader org.apache.felix.framework.BundleWiringImpl@7388152b 
 Loaded from file:/home/danecek/.m2/repository/org/apache/derby/derby/10.10.1.1/derby-10.10.1.1.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.7.0_40-b43
@@ -11,3 +11,9 @@ os.arch=amd64
 os.version=3.0.0-32-generic
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Sat Dec 07 16:12:43 CET 2013: Shutting down Derby engine
+----------------------------------------------------------------
+Sat Dec 07 16:12:43 CET 2013:
+Shutting down instance a816c00e-0142-cd9e-05dc-000003037630 on database directory /home/danecek/libraryDB with class loader org.apache.felix.framework.BundleWiringImpl@7388152b 
+----------------------------------------------------------------

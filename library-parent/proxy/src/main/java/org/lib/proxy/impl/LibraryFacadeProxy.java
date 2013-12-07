@@ -4,21 +4,19 @@
  */
 package org.lib.proxy.impl;
 
-import java.awt.print.Book;
-import java.io.Reader;
 import java.util.Collection;
 import org.lib.business.LibraryFacade;
 import org.lib.connection.ConnectionService;
+import org.lib.model.Address;
+import org.lib.model.Book;
 import org.lib.model.BookId;
+import org.lib.model.Reader;
 import org.lib.model.ReaderId;
-import org.lib.protocol.Books;
 import org.lib.protocol.CreateBook;
 import org.lib.protocol.DeleteBooks;
 import org.lib.protocol.GetBooks;
 import org.lib.protocol.GetReaders;
-import org.lib.protocol.Readers;
 import org.lib.utils.LibraryException;
-
 
 /**
  *
@@ -36,9 +34,7 @@ public class LibraryFacadeProxy extends LibraryFacade {
 
     @Override
     public Collection<Reader> getReaders() throws LibraryException {
-        Readers readers = (Readers) ConnectionService.getDefault().send(new GetReaders());
-        return readers.getReaders();
-
+        return (Collection<Reader>) ConnectionService.getDefault().send(new GetReaders());
     }
 
     @Override
@@ -57,14 +53,9 @@ public class LibraryFacadeProxy extends LibraryFacade {
     }
 
     @Override
-    public void updateBook(Book book) throws LibraryException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public Collection<Book> getBooks() throws LibraryException {
-        Books books = (Books) ConnectionService.getDefault().send(new GetBooks());
-        return books.getBooks();
+        return (Collection<Book>) ConnectionService.getDefault().send(new GetBooks());
+
     }
 
     @Override
@@ -78,7 +69,12 @@ public class LibraryFacadeProxy extends LibraryFacade {
     }
 
     @Override
-    public void borrowBooks(ReaderId id, Collection<Book> books) throws LibraryException {
+    public void updateBook(org.lib.model.Book book) throws LibraryException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void borrowBooks(ReaderId id, Collection<org.lib.model.Book> books) throws LibraryException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

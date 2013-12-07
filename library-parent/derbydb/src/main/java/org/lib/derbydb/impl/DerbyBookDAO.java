@@ -37,6 +37,7 @@ public class DerbyBookDAO implements BookDAO {
         }
     }
 
+    @Override
     public BookId create(String title) throws LibraryException {
         try {
             createPS.setString(1, title);
@@ -47,6 +48,7 @@ public class DerbyBookDAO implements BookDAO {
         }
     }
 
+    @Override
     public void delete(BookId id) throws LibraryException {
         try {
             deletePS.setInt(1, id.getId());
@@ -56,22 +58,25 @@ public class DerbyBookDAO implements BookDAO {
         }
     }
 
+    @Override
     public void update(Book reader) throws LibraryException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
     public Book find(BookId id) throws LibraryException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
     public Collection<Book> getAll() throws LibraryException {
         try {
             ResultSet rs = findAllPS.executeQuery();
-            ArrayList<Book> readers = new ArrayList<Book>();
+            ArrayList<Book> books = new ArrayList<>();
             while (rs.next()) {
-                readers.add(new Book(new BookId(rs.getInt(1)), rs.getString(2)));
+                books.add(new Book(new BookId(rs.getInt(1)), rs.getString(2)));
             }
-            return readers;
+            return books;
         } catch (SQLException ex) {
             throw new LibraryException(ex);
         }
