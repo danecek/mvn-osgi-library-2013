@@ -40,7 +40,8 @@
                 <configuration>
                     <instructions>
                         <Bundle-Activator>org.library.jaxbconnection.JAXBConnectionActivator</Bundle-Activator>
-                        <Export-Package />
+                        <Export-Package >org.library.impl,org.library.jaxbconnection</Export-Package>
+                        <Private-Package>org.library.impl.*,org.library.jaxbconnection.*</Private-Package>
                     </instructions>
                 </configuration>
             </plugin>

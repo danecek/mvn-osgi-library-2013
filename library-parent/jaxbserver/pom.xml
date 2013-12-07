@@ -34,6 +34,11 @@
             <artifactId>protocol</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>jaxbconnection</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

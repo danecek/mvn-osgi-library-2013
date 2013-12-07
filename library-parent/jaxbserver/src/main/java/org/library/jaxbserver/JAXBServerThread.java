@@ -4,16 +4,11 @@
  */
 package org.library.jaxbserver;
 
-import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.io.StringReader;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.nio.charset.StandardCharsets;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.bind.JAXBContext;
@@ -33,13 +28,14 @@ import org.lib.protocol.LibraryCommand;
 import org.lib.protocol.Ok;
 import org.lib.protocol.Readers;
 import org.lib.utils.LibraryException;
+import org.library.impl.JAXBConnection;
 
 /**
  *
  * @author danecek
  */
 public class JAXBServerThread extends Thread {
-    
+
     static final Logger logger = Logger.getLogger(JAXBServerThread.class.getName());
     static Class[] preloaded = {
         Book.class,
@@ -48,9 +44,9 @@ public class JAXBServerThread extends Thread {
         GetBooks.class
     };
     JAXBContext jc;
-    Unmarshaller u;
-    Marshaller m;
-    
+    Unmarshaller unmarshaller;
+    Marshaller marshaller;
+
     public JAXBServerThread() {
         try {
             jc = JAXBContext.newInstance(GetReaders.class,
@@ -60,39 +56,24 @@ public class JAXBServerThread extends Thread {
                     CreateBook.class,
                     DeleteBooks.class,
                     Ok.class);
-            u = jc.createUnmarshaller();
-            m = jc.createMarshaller();
-
-            //   new Book(new BookId(1), null);
-            //        setUncaughtExceptionHandler(new UncaughtExceptionHandler() {
-            //            @Override
-            //            public void uncaughtException(Thread thread, Throwable thrwbl) {
-            //                System.out.println("internal error!!!");
-            //        });
-            //        });
+            unmarshaller = jc.createUnmarshaller();
+            marshaller = jc.createMarshaller();
         } catch (JAXBException ex) {
             logger.log(Level.SEVERE, null, ex);
         }
     }
-    
+
     @Override
     public void run() {
+
         try {
             ServerSocket ssocket = new ServerSocket(LibraryCommand.PORT);
             logger.log(Level.INFO, "waiting for client");
             try (Socket s = ssocket.accept();
-                    InputStream is = s.getInputStream();
-                    DataInputStream ois = new DataInputStream(is);
-                    PrintWriter oos = new PrintWriter(new OutputStreamWriter(s.getOutputStream(), StandardCharsets.UTF_8))) {
-                char[] cbuf = new char[1000];
+                    DataInputStream ois = new DataInputStream(s.getInputStream());
+                    DataOutputStream dos = new DataOutputStream(s.getOutputStream())) {
                 for (;;) {
-                    logger.log(Level.INFO, "waiting for command");
-                    int l = ois.readInt();
-                    byte[] buf = new byte[l];
-                    ois.readFully(buf);
-                    logger.log(Level.INFO, "command: {0}", new String(buf));
-                    LibraryCommand comm = (LibraryCommand) u.unmarshal(new ByteArrayInputStream((buf)));
-                    logger.log(Level.INFO, "command: {0}", comm);
+                    LibraryCommand comm = (LibraryCommand) JAXBConnection.unmarshalMessage(ois, unmarshaller);
                     if (comm instanceof Disconnect) {
                         break;
                     }
@@ -103,8 +84,7 @@ public class JAXBServerThread extends Thread {
                         result = ex;
                     }
                     logger.log(Level.INFO, "result: {0}", result);
-                    m.marshal(result, oos);
-                    oos.flush();
+                    JAXBConnection.marshallObject(result, marshaller, dos);
                 }
             } catch (JAXBException ex) {
                 logger.log(Level.SEVERE, null, ex);

@@ -21,7 +21,7 @@
         <module>grizzlyserver</module>
         <module>connection</module>
         <module>jaxbconnection</module>
-    <module>jaxbserver</module>
+        <module>jaxbserver</module>
   </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -31,9 +31,8 @@
             <dependency>
                 <groupId>org.osgi</groupId>
                 <artifactId>org.osgi.core</artifactId>
-                <version>4.3.0</version>
                 <scope>provided</scope>
-       
+                <version>4.3.1</version>            
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>

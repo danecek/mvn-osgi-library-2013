@@ -40,6 +40,7 @@ public final class ConnectionDialog extends AbstractLibraryDialog {
     public void okAction() {
         try {
             ConnectionService.getDefault().connect(InetAddress.getByName(host.getText()), Integer.parseInt(port.getText()));
+             MainFrame.getInstance().notifyActions();
         } catch (UnknownHostException | LibraryException ex) {
             MainFrame.getInstance().showError(ex);
         }

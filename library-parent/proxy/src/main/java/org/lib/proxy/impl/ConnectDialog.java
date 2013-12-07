@@ -9,9 +9,10 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.lib.connection.Connection;
+import org.lib.connection.ConnectionService;
 import org.lib.controller.dialogs.AbstractLibraryDialog;
 import org.lib.controller.dialogs.ValidatedTF;
+import org.lib.utils.LibraryException;
 
 /**
  *
@@ -32,13 +33,14 @@ public class ConnectDialog extends AbstractLibraryDialog {
     }
 
     @Override
-    public void okAction() {
+    public void okAction() throws LibraryException {
         try {
-            Connection.getInstance().connect(InetAddress.getByName(host.getText()),
+            ConnectionService.getDefault().connect(InetAddress.getByName(host.getText()),
                     Integer.parseInt(port.getText()));
         } catch (UnknownHostException ex) {
             Logger.getLogger(ConnectDialog.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 
     @Override

@@ -34,7 +34,7 @@ public class BookPanel extends JPanel {
         sm.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent lse) {
-                MainFrame.getInstance().actionsNotif();
+                MainFrame.getInstance().notifyActions();
             }
         });
 

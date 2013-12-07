@@ -1,5 +1,6 @@
 package org.library.jaxbconnection;
 
+import org.library.impl.JAXBConnection;
 import org.lib.connection.ConnectionService;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;

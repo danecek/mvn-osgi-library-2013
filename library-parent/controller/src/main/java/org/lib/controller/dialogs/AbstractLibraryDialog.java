@@ -18,6 +18,7 @@ import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import org.lib.utils.LibraryException;
 import org.lib.view.MainFrame;
 
 /**
@@ -25,11 +26,11 @@ import org.lib.view.MainFrame;
  * @author danecek
  */
 public abstract class AbstractLibraryDialog extends JDialog implements Validator {
-
+    
     private JLabel errorLabel;
     private JPanel content = new JPanel();
     private Action okAction;
-
+    
     final JComponent createErrorPanel() {
         Box errPanel = new Box(BoxLayout.X_AXIS);
         int i = 5;
@@ -37,7 +38,7 @@ public abstract class AbstractLibraryDialog extends JDialog implements Validator
         errPanel.add(errorLabel = new JLabel());
         return errPanel;
     }
-
+    
     final JComponent createButtonPanel() {
         Box btnPanel = new Box(BoxLayout.X_AXIS);
         int i = 5;
@@ -53,13 +54,17 @@ public abstract class AbstractLibraryDialog extends JDialog implements Validator
         btnPanel.add(new JButton(okAction = new AbstractAction("OK") {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                AbstractLibraryDialog.this.okAction();
-                AbstractLibraryDialog.this.dispose();
+                try {
+                    AbstractLibraryDialog.this.okAction();
+                    AbstractLibraryDialog.this.dispose();
+                } catch (LibraryException ex) {
+                    MainFrame.getInstance().showError(ex);
+                }
             }
         }));
         return btnPanel;
     }
-
+    
     public AbstractLibraryDialog(String title) {
         super(MainFrame.getInstance(), title, true);
         int i = 5;
@@ -70,20 +75,20 @@ public abstract class AbstractLibraryDialog extends JDialog implements Validator
         Point loc = MainFrame.getInstance().getLocation();
         loc.translate(200, 100);
         setLocation(loc);
-
+        
     }
-
+    
     public void error(String message) {
         errorLabel.setText("Error: " + message);
-
+        
     }
-
+    
     public void clearError() {
         errorLabel.setText("");
         okAction.setEnabled(true);
     }
-
-    public abstract void okAction();
+    
+    public abstract void okAction() throws LibraryException;
 
     /**
      * @return the content

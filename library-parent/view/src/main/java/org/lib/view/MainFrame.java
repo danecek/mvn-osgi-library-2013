@@ -91,7 +91,7 @@ public class MainFrame extends JFrame {
                 showError(ex);
             }
         }
-        actionsNotif();
+        notifyActions();
     }
 
     public static void addRefreshable(Refreshable r) {
@@ -120,7 +120,7 @@ public class MainFrame extends JFrame {
         return mainPanel.getSelectedBooks();
     }
 
-    public void actionsNotif() {
+    public void notifyActions() {
         for (LibraryAction te : actions) {
             te.setEnabled();
         }
