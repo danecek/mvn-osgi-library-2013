@@ -12,6 +12,7 @@ import org.lib.connection.ConnectionService;
 import org.lib.controller.dialogs.AbstractLibraryDialog;
 import org.lib.protocol.LibraryCommand;
 import org.lib.utils.LibraryException;
+import org.lib.utils.Messages;
 import org.lib.utils.ValidatedTF;
 import org.lib.view.MainFrame;
 
@@ -21,15 +22,15 @@ import org.lib.view.MainFrame;
  */
 public final class ConnectionDialog extends AbstractLibraryDialog {
 
-    ValidatedTF host;
-    ValidatedTF port;
+    private ValidatedTF host;
+    private ValidatedTF port;
 
     public ConnectionDialog() {
-        super("Connection Dialog");
+        super(Messages.Connection_Dialog.cm());
         getContent().setLayout(new GridLayout(2, 2));
-        getContent().add(new JLabel("Host: "));
+        getContent().add(new JLabel(Messages.Host.cm() + ": "));
         getContent().add(host = new ValidatedTF(this, "localhost"));
-        getContent().add(new JLabel("Port: "));
+        getContent().add(new JLabel(Messages.Port.cm() + ": "));
         getContent().add(port = new ValidatedTF(this, Integer.toString(LibraryCommand.PORT)));
         validateDialog();
         pack();
@@ -40,7 +41,7 @@ public final class ConnectionDialog extends AbstractLibraryDialog {
     public void okAction() {
         try {
             ConnectionService.getDefault().connect(InetAddress.getByName(host.getText()), Integer.parseInt(port.getText()));
-             MainFrame.getInstance().notifyActions();
+            MainFrame.getInstance().refresh();
         } catch (UnknownHostException | LibraryException ex) {
             MainFrame.getInstance().showError(ex);
         }
@@ -57,10 +58,9 @@ public final class ConnectionDialog extends AbstractLibraryDialog {
         try {
             Integer.parseInt(port.getText());
         } catch (NumberFormatException ex) {
-            error("invalid port ");
+            error(Messages.Invalid_port.cm());
             return false;
         }
-
         clearError();
         return true;
     }

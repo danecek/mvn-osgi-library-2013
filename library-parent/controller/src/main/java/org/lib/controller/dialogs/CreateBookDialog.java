@@ -9,6 +9,7 @@ import org.lib.utils.ValidatedTF;
 import javax.swing.JLabel;
 import org.lib.business.LibraryFacade;
 import org.lib.utils.LibraryException;
+import org.lib.utils.Messages;
 import org.lib.view.MainFrame;
 
 /**
@@ -20,20 +21,20 @@ public final class CreateBookDialog extends AbstractLibraryDialog {
     private ValidatedTF title;
 
     public CreateBookDialog() {
-        super("Create Book"); // todo
+        super(Messages.Create_Book.cm());
         title = new ValidatedTF(this);
         getContent().setLayout(new GridLayout(0, 2));
-        getContent().add(new JLabel("Title:"));
+        getContent().add(new JLabel(Messages.Title.cm() + ": "));
         getContent().add(title);
-        validateDialog();
         pack();
         setVisible(true);
+        validateDialog();
     }
 
     @Override
     public boolean validateDialog() {
         if (title.getText().isEmpty()) {
-            error("Prazdny titul");// todo
+            error(Messages.Empty_title.cm());
             return false;
         }
         clearError();
@@ -51,6 +52,4 @@ public final class CreateBookDialog extends AbstractLibraryDialog {
             MainFrame.getInstance().showError(le);
         }
     }
-
-
 }

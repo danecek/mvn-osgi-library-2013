@@ -11,6 +11,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import org.lib.model.Reader;
+import org.lib.utils.Messages;
 
 /**
  *
@@ -22,7 +23,7 @@ public class ReaderPanel extends JPanel {
     private ReaderModel rm;
 
     public ReaderPanel() {
-        setBorder(BorderFactory.createTitledBorder("Readers")); //todo
+        setBorder(BorderFactory.createTitledBorder(Messages.Readers.cm()));
         setLayout(new BorderLayout());
         add(new JScrollPane(tbl = new JTable(rm = new ReaderModel())));
         tbl.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

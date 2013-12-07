@@ -7,16 +7,12 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.library</groupId>
-    <artifactId>jaxbconnection</artifactId>
+    <groupId>org.lib</groupId>
+    <artifactId>xmlconnection</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>bundle</packaging>
 
-    <name>jaxbconnection OSGi Bundle</name>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <name>xmlconnection OSGi Bundle</name>
 
     <dependencies>
         <dependency>
@@ -24,9 +20,8 @@
             <artifactId>org.osgi.core</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.lib</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>connection</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
@@ -39,14 +34,13 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Bundle-Activator>org.library.jaxbconnection.JAXBConnectionActivator</Bundle-Activator>
-                        <Export-Package >org.library.impl,org.library.jaxbconnection</Export-Package>
-                        <Private-Package>org.library.impl.*,org.library.jaxbconnection.*</Private-Package>
+                        <Bundle-Activator>org.lib.xmlconnection.XMLConnectionActivator</Bundle-Activator>
+                        <Export-Package >org.lib.xmlconnection</Export-Package>
+                        <Private-Package>org.lib.impl.*,org.lib.xmlconnection.*</Private-Package>
                     </instructions>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
-   
+       
 </project>

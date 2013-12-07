@@ -18,8 +18,11 @@
         <dependency>
             <groupId>org.osgi</groupId>
             <artifactId>org.osgi.core</artifactId>
-            <!-- version>4.3.0</version>
-            <scope>provided</scope -->
+        </dependency>        
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
@@ -28,19 +31,12 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>integration</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>utils</artifactId>
-            <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.10</version>
-            <scope>test</scope>
-        </dependency>
+
     </dependencies>
 
     <build>

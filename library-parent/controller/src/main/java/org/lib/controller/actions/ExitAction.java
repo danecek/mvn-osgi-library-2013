@@ -6,6 +6,7 @@ package org.lib.controller.actions;
 
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
+import org.lib.utils.Messages;
 import org.lib.view.MainFrame;
 
 /**
@@ -16,8 +17,8 @@ public class ExitAction extends AbstractLibraryAction {
     
 
     public ExitAction() {
-        super("Exit", "File"); // todo
-        this.putValue(AbstractAction.SHORT_DESCRIPTION, "Ukonceni");
+        super(Messages.Exit.cm(), Messages.File.cm());
+        this.putValue(AbstractAction.SHORT_DESCRIPTION, Messages.Exit_application.cm());
     }
 
     @Override

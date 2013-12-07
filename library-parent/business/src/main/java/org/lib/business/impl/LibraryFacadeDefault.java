@@ -75,4 +75,9 @@ public class LibraryFacadeDefault extends LibraryFacade {
             AbstractDAOFactory.getDefault().getBorrowDAO().borrowBook(id, b.getId());
         }
     }
+
+    @Override
+    public boolean isAvailable() {
+        return true;
+}
 }

@@ -12,24 +12,31 @@ import org.lib.business.LibraryFacade;
 import org.lib.model.Book;
 import org.lib.model.BookId;
 import org.lib.utils.LibraryException;
+import org.lib.utils.Messages;
 import org.lib.view.MainFrame;
 
 /**
  *
  * @author danecek
  */
-public class DeleteBookAction extends AbstractLibraryAction {
+public class DeleteBooksAction extends AbstractLibraryAction {
 
-    public DeleteBookAction() {
-        super("Delete Books", "Book"); // todo
+    public DeleteBooksAction() {
+        super(Messages.Delete_Books.cm(), Messages.Book.cm()); // todo
         setEnabled(false);
+    }
+
+    @Override
+    public void setEnabled() {
+        setEnabled(LibraryFacade.getDefault().isAvailable()
+                && !MainFrame.getInstance().getSelectedBooks().isEmpty());
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
         Collection<Book> books = MainFrame.getInstance().getSelectedBooks();
         if (books.isEmpty()) {
-            MainFrame.getInstance().showError("Neni vybrana"); // todo
+            MainFrame.getInstance().showError(Messages.No_selected_book.cm());
         } else {
             try {
                 int result = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "?"); // todo
@@ -45,10 +52,5 @@ public class DeleteBookAction extends AbstractLibraryAction {
                 MainFrame.getInstance().showError(ex);
             }
         }
-    }
-
-    @Override
-    public void setEnabled() {
-        setEnabled(!MainFrame.getInstance().getSelectedBooks().isEmpty());
     }
 }

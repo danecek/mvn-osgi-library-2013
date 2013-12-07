@@ -1,18 +1,19 @@
-package org.library.jaxbserver;
+package org.lib.xmlconnection;
 
+import org.lib.xmlconnection.impl.JAXBConnection;
+import org.lib.connection.ConnectionService;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
-public class Activator implements BundleActivator {
+public class XMLConnectionActivator implements BundleActivator {
 
     @Override
     public void start(BundleContext context) throws Exception {
-        new JAXBServerThread().start();
+        context.registerService(ConnectionService.class, new JAXBConnection(), null);
     }
 
     @Override
     public void stop(BundleContext context) throws Exception {
         // TODO add deactivation code here
     }
-
 }

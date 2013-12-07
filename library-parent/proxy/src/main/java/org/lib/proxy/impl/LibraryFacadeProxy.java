@@ -78,4 +78,9 @@ public class LibraryFacadeProxy extends LibraryFacade {
     public void borrowBooks(ReaderId id, Collection<org.lib.model.Book> books) throws LibraryException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public boolean isAvailable() {        
+       return ConnectionService.getDefault().isConnected();
+    }
 }

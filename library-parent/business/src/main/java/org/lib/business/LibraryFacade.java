@@ -60,4 +60,6 @@ public abstract class LibraryFacade {
     public abstract void returnBooks(ReaderId id, Collection<Book> books) throws LibraryException;
 
     public abstract void borrowBooks(ReaderId id, Collection<Book> books) throws LibraryException;
+
+    public abstract boolean isAvailable();
 }

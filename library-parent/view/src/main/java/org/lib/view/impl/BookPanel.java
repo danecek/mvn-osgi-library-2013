@@ -14,6 +14,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import org.lib.model.Book;
+import org.lib.utils.Messages;
 import org.lib.view.MainFrame;
 
 /**
@@ -26,7 +27,7 @@ public class BookPanel extends JPanel {
     private BookModel bm;
 
     public BookPanel() {
-        setBorder(BorderFactory.createTitledBorder("Books")); //todo
+        setBorder(BorderFactory.createTitledBorder(Messages.Books.cm()));
         setLayout(new BorderLayout());
         add(new JScrollPane(tbl = new JTable(bm = new BookModel())));
         ListSelectionModel sm = tbl.getSelectionModel();

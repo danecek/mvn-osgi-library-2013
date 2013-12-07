@@ -16,8 +16,8 @@ public class ApplicationActivator implements BundleActivator {
             @Override
             public void run() {
                 MainFrame.getInstance().setContext(context);
-                MainFrame.getInstance().refresh();
                 MainFrame.getInstance().setVisible(true);
+                MainFrame.getInstance().notifyActions();
             }
         });
     }

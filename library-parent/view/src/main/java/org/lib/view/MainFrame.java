@@ -34,7 +34,10 @@ public class MainFrame extends JFrame {
 
     private static MainFrame instance;
     static Collection<Refreshable> rf = new ArrayList<>();
-    Collection<LibraryAction> actions = new ArrayList<>();
+    private Collection<LibraryAction> actions = new ArrayList<>();
+    private MainPanel mainPanel;
+    private JMenuBar menuBar;
+    private BundleContext context;
 
     public static MainFrame getInstance() {
         if (instance == null) {
@@ -43,7 +46,6 @@ public class MainFrame extends JFrame {
 
         return instance;
     }
-    private BundleContext context;
 
     public void exit() {
         try {
@@ -55,13 +57,11 @@ public class MainFrame extends JFrame {
             Logger.getLogger(MainFrame.class.getName()).log(Level.INFO, null, ex);
         }
     }
-    MainPanel mainPanel;
-    JMenuBar menuBar;
 
     public MainFrame() {
         super(Messages.Main_Frame.cm());
         menuBar = new JMenuBar();
-        menuBar.add(new JMenu("File"));  //
+        menuBar.add(new JMenu(Messages.File.cm()));
         setJMenuBar(menuBar);
 
         add(mainPanel = new MainPanel());
@@ -112,8 +112,6 @@ public class MainFrame extends JFrame {
         mnu = new JMenu(libraryAction.getMenuName());
         mnuBar.add(mnu);
         mnu.add((Action) libraryAction);
-
-
     }
 
     public Collection<Book> getSelectedBooks() {
@@ -126,9 +124,6 @@ public class MainFrame extends JFrame {
         }
     }
 
-    /**
-     * @param context the context to set
-     */
     public void setContext(BundleContext context) {
         this.context = context;
     }

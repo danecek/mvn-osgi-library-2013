@@ -13,6 +13,7 @@ import org.lib.connection.ConnectionService;
 import org.lib.controller.dialogs.AbstractLibraryDialog;
 import org.lib.controller.dialogs.ValidatedTF;
 import org.lib.utils.LibraryException;
+import org.lib.utils.Messages;
 
 /**
  *
@@ -24,7 +25,7 @@ public class ConnectDialog extends AbstractLibraryDialog {
     ValidatedTF port;
 
     public ConnectDialog() {
-        super("Connect Dialog");
+        super(Messages.Connect_Dialog.cm());
         getContent().setLayout(new GridLayout(0, 2));
         getContent().add(host = new ValidatedTF(this, "localhost"));
         getContent().add(port = new ValidatedTF(this, "3456"));

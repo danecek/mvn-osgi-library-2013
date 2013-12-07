@@ -7,6 +7,7 @@ package org.lib.proxy;
 import java.awt.event.ActionEvent;
 import org.lib.connection.ConnectionService;
 import org.lib.controller.actions.AbstractLibraryAction;
+import org.lib.utils.Messages;
 import org.lib.view.MainFrame;
 
 /**
@@ -16,7 +17,7 @@ import org.lib.view.MainFrame;
 public class DisconnectAction extends AbstractLibraryAction {
 
     public DisconnectAction() {
-        super("Disconnect", "Connection");
+        super(Messages.Disconnect.cm(), Messages.Connection.cm());
     }
 
     @Override

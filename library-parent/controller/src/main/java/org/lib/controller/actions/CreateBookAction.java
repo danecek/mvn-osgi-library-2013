@@ -5,7 +5,9 @@
 package org.lib.controller.actions;
 
 import java.awt.event.ActionEvent;
+import org.lib.business.LibraryFacade;
 import org.lib.controller.dialogs.CreateBookDialog;
+import org.lib.utils.Messages;
 
 /**
  *
@@ -14,10 +16,13 @@ import org.lib.controller.dialogs.CreateBookDialog;
 public class CreateBookAction extends AbstractLibraryAction {
 
     public CreateBookAction() {
-        super("Create Book", "Book"); // todo
-
+        super(Messages.Create_Book.cm(), Messages.Book.cm());
     }
-    
+
+    @Override
+    public void setEnabled() {
+        setEnabled(LibraryFacade.getDefault().isAvailable());
+    }
 
     @Override
     public void actionPerformed(ActionEvent ae) {

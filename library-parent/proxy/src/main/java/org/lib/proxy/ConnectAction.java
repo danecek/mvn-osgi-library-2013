@@ -7,6 +7,7 @@ package org.lib.proxy;
 import java.awt.event.ActionEvent;
 import org.lib.connection.ConnectionService;
 import org.lib.controller.actions.AbstractLibraryAction;
+import org.lib.utils.Messages;
 
 /**
  *
@@ -15,7 +16,7 @@ import org.lib.controller.actions.AbstractLibraryAction;
 public class ConnectAction extends AbstractLibraryAction {
 
     public ConnectAction() {
-        super("Connect", "Connection");
+        super(Messages.Connect.cm(), Messages.Connection.cm());
     }
 
     @Override
@@ -26,7 +27,6 @@ public class ConnectAction extends AbstractLibraryAction {
     @Override
     public void setEnabled() {
       setEnabled(!ConnectionService.getDefault().isConnected());
-    }
-    
+    }   
     
 }
