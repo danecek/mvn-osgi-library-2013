@@ -15,7 +15,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import org.lib.business.LibraryFacade;
+import org.lib.business.LibraryFacadeService;
 import org.lib.model.Book;
 import org.lib.model.BookId;
 import org.lib.protocol.Disconnect;
@@ -66,7 +66,7 @@ public class XMLServerThread extends Thread {
                     }
                     Object result;
                     try {
-                        result = comm.execute(LibraryFacade.getDefault());
+                        result = comm.execute(LibraryFacadeService.getDefault());
                     } catch (LibraryException ex) {
                         result = ex;
                     }
