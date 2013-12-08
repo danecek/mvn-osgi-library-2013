@@ -11,7 +11,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.lib.business.LibraryFacade;
+import org.lib.business.LibraryFacadeService;
 import org.lib.model.Book;
 import org.lib.model.BookId;
 import org.lib.protocol.Disconnect;
@@ -56,7 +56,7 @@ public class ServerThread extends Thread {
                     }
                     Object result;
                     try {
-                        result = comm.execute(LibraryFacade.getDefault());
+                        result = comm.execute(LibraryFacadeService.getDefault());
                     } catch (LibraryException ex) {
                         result = ex;
                     }
