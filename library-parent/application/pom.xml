@@ -56,14 +56,6 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>connection</artifactId>
         </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>proxy</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>xmlconnection</artifactId>
-        </dependency>
     </dependencies>
 
     <build>

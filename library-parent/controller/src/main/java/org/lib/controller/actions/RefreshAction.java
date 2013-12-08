@@ -5,7 +5,7 @@
 package org.lib.controller.actions;
 
 import java.awt.event.ActionEvent;
-import org.lib.business.LibraryFacade;
+import org.lib.business.LibraryFacadeService;
 import org.lib.utils.Messages;
 import org.lib.view.MainFrame;
 
@@ -21,7 +21,7 @@ public class RefreshAction extends AbstractLibraryAction {
 
     @Override
     public void setEnabled() {
-        setEnabled(LibraryFacade.getDefault().isAvailable());
+        setEnabled(LibraryFacadeService.getDefault().isAvailable());
     }
 
     @Override

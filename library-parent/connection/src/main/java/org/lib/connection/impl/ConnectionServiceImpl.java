@@ -22,18 +22,18 @@ import org.lib.utils.Messages;
  * @author danecek
  */
 public class ConnectionServiceImpl extends ConnectionService {
-    
+
     private ObjectInputStream ois;
     private ObjectOutputStream oos;
     private Socket socket;
     private static Class[] preloaded = {
         Reader.class,};
-    
+
     @Override
     public boolean isConnected() {
         return socket != null;
     }
-    
+
     @Override
     public void connect(InetAddress ia, int port) throws LibraryException {
         try {
@@ -41,28 +41,29 @@ public class ConnectionServiceImpl extends ConnectionService {
             socket.setSoTimeout(3000);
             oos = new ObjectOutputStream(socket.getOutputStream());
             ois = new ObjectInputStream(socket.getInputStream());
-            
+
         } catch (IOException ex) {
             throw new LibraryException(ex);
         }
     }
-    
+
     @Override
     public void disconnect() {
-        try {
-            oos.close();
-            ois.close();
-            socket.close();
-            socket = null;
-        } catch (IOException ex) {
-            Logger.getLogger(ConnectionServiceImpl.class.getName()).log(Level.INFO, null, ex);
+        if (isConnected()) {
+            try {
+                oos.close();
+                ois.close();
+                socket.close();
+                socket = null;
+            } catch (IOException ex) {
+                Logger.getLogger(ConnectionServiceImpl.class.getName()).log(Level.INFO, null, ex);
+            }
         }
-        
     }
-    
+
     public ConnectionServiceImpl() {
     }
-    
+
     @Override
     public Object send(LibraryCommand libraryCommand) throws LibraryException {
         if (!isConnected()) {

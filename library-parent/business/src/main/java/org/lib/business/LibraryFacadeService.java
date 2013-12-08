@@ -18,14 +18,14 @@ import org.osgi.util.tracker.ServiceTracker;
  *
  * @author danecek
  */
-public abstract class LibraryFacade {
+public abstract class LibraryFacadeService {
 
     private static ServiceTracker st;
-    private static LibraryFacade libraryFacade;
+    private static LibraryFacadeService libraryFacade;
 
-    public static LibraryFacade getDefault() {
+    public static LibraryFacadeService getDefault() {
         if (libraryFacade == null) {
-            libraryFacade = (LibraryFacade) st.getService();
+            libraryFacade = (LibraryFacadeService) st.getService();
             if (libraryFacade == null) {
                 libraryFacade = new LibraryFacadeDefault();
             }

@@ -8,13 +8,15 @@ import org.osgi.util.tracker.ServiceTracker;
 
 public class BusinessActivator implements BundleActivator {
 
+    @Override
     public void start(BundleContext context) throws Exception {
         Logger.getLogger(getClass().getName()).log(Level.INFO, getClass().getName());
-        ServiceTracker st = new ServiceTracker(context, LibraryFacade.class, null);
+        ServiceTracker st = new ServiceTracker(context, LibraryFacadeService.class, null);
         st.open();
-        LibraryFacade.setSt(st);
+        LibraryFacadeService.setSt(st);
     }
 
+    @Override
     public void stop(BundleContext context) throws Exception {
         // TODO add deactivation code here
     }

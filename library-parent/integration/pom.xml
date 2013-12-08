@@ -42,7 +42,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Bundle-Activator>org.lib.integration.Activator</Bundle-Activator>
+                        <Bundle-Activator>org.lib.integration.IntegrationActivator</Bundle-Activator>
                         <Export-Package >org.lib.integration</Export-Package>
                         <Private-Package>org.lib.integration.*</Private-Package>
                     </instructions>

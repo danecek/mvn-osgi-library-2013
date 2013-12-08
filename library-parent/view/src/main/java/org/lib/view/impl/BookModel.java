@@ -14,7 +14,7 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
-import org.lib.business.LibraryFacade;
+import org.lib.business.LibraryFacadeService;
 import org.lib.model.Book;
 import org.lib.utils.LibraryException;
 import static org.lib.utils.Messages.*;
@@ -42,7 +42,7 @@ public final class BookModel extends AbstractTableModel implements Refreshable {
 
     @Override
     public void refresh() throws LibraryException {
-        Collection<Book> rs = LibraryFacade.getDefault().getBooks();
+        Collection<Book> rs = LibraryFacadeService.getDefault().getBooks();
         books = new ArrayList<>(rs);
         Collections.sort(books, new Comparator<Book>() {
             @Override

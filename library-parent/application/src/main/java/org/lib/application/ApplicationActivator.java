@@ -4,6 +4,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.lib.view.MainFrame;
 import javax.swing.SwingUtilities;
+import org.lib.business.LibraryFacadeService;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
@@ -18,6 +19,9 @@ public class ApplicationActivator implements BundleActivator {
                 MainFrame.getInstance().setContext(context);
                 MainFrame.getInstance().setVisible(true);
                 MainFrame.getInstance().notifyActions();
+                if (LibraryFacadeService.getDefault().isAvailable()) {
+                    MainFrame.getInstance().refresh();
+                }
             }
         });
     }

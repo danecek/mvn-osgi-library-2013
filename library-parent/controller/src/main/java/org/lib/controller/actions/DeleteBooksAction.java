@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.swing.JOptionPane;
-import org.lib.business.LibraryFacade;
+import org.lib.business.LibraryFacadeService;
 import org.lib.model.Book;
 import org.lib.model.BookId;
 import org.lib.utils.LibraryException;
@@ -28,7 +28,7 @@ public class DeleteBooksAction extends AbstractLibraryAction {
 
     @Override
     public void setEnabled() {
-        setEnabled(LibraryFacade.getDefault().isAvailable()
+        setEnabled(LibraryFacadeService.getDefault().isAvailable()
                 && !MainFrame.getInstance().getSelectedBooks().isEmpty());
     }
 
@@ -45,7 +45,7 @@ public class DeleteBooksAction extends AbstractLibraryAction {
                     for (Book book : books) {
                         bookIds.add(book.getId());
                     }
-                    LibraryFacade.getDefault().deleteBooks(bookIds);
+                    LibraryFacadeService.getDefault().deleteBooks(bookIds);
                     MainFrame.getInstance().refresh();
                 }
             } catch (LibraryException ex) {

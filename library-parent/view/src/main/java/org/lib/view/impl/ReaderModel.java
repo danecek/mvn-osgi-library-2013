@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-import org.lib.business.LibraryFacade;
+import org.lib.business.LibraryFacadeService;
 import org.lib.model.Reader;
 import org.lib.utils.LibraryException;
 import static org.lib.utils.Messages.*;
@@ -36,7 +36,7 @@ public final class ReaderModel
 
     @Override
     public void refresh() throws LibraryException {
-        Collection<Reader> rs = LibraryFacade.getDefault().getReaders();
+        Collection<Reader> rs = LibraryFacadeService.getDefault().getReaders();
         readers = new ArrayList<>(rs);
         Collections.sort(readers, new Comparator<Reader>() {
             @Override

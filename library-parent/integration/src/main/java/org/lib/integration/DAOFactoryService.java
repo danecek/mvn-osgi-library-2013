@@ -11,9 +11,9 @@ import org.osgi.util.tracker.ServiceTracker;
  *
  * @author danecek
  */
-public abstract class AbstractDAOFactory {
+public abstract class DAOFactoryService {
 
-    private static AbstractDAOFactory instance;
+    private static DAOFactoryService instance;
     private static ServiceTracker st;
 
     /**
@@ -29,9 +29,9 @@ public abstract class AbstractDAOFactory {
 
     public abstract BorrowDAO getBorrowDAO();
 
-    public static AbstractDAOFactory getDefault() {
+    public static DAOFactoryService getDefault() {
         if (instance == null) {
-            instance = (AbstractDAOFactory) st.getService();
+            instance = (DAOFactoryService) st.getService();
             if (instance == null) {
                 instance = new DAOFactoryDefault();
             }

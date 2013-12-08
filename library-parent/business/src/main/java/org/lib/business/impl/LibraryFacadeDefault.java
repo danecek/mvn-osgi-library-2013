@@ -5,8 +5,8 @@
 package org.lib.business.impl;
 
 import java.util.Collection;
-import org.lib.business.LibraryFacade;
-import org.lib.integration.AbstractDAOFactory;
+import org.lib.business.LibraryFacadeService;
+import org.lib.integration.DAOFactoryService;
 import org.lib.model.Address;
 import org.lib.model.Book;
 import org.lib.model.BookId;
@@ -18,61 +18,61 @@ import org.lib.utils.LibraryException;
  *
  * @author danecek
  */
-public class LibraryFacadeDefault extends LibraryFacade {
+public class LibraryFacadeDefault extends LibraryFacadeService {
 
     @Override
     public void createReader(String name, Address address) throws LibraryException {
-        AbstractDAOFactory.getDefault().getReaderDAO().create(name, address);
+        DAOFactoryService.getDefault().getReaderDAO().create(name, address);
     }
 
     @Override
     public Collection<Reader> getReaders() throws LibraryException {
-        return AbstractDAOFactory.getDefault().getReaderDAO().getAll();
+        return DAOFactoryService.getDefault().getReaderDAO().getAll();
     }
 
     @Override
     public void updateReader(Reader reader) throws LibraryException {
-        AbstractDAOFactory.getDefault().getReaderDAO().update(reader);
+        DAOFactoryService.getDefault().getReaderDAO().update(reader);
     }
 
     @Override
     public void deleteReader(ReaderId id) throws LibraryException {
-        AbstractDAOFactory.getDefault().getReaderDAO().delete(id);
+        DAOFactoryService.getDefault().getReaderDAO().delete(id);
     }
 
     @Override
     public BookId createBook(String title) throws LibraryException {
-        return AbstractDAOFactory.getDefault().getBookDAO().create(title);
+        return DAOFactoryService.getDefault().getBookDAO().create(title);
     }
 
     @Override
     public Collection<Book> getBooks() throws LibraryException {
-        return AbstractDAOFactory.getDefault().getBookDAO().getAll();
+        return DAOFactoryService.getDefault().getBookDAO().getAll();
     }
 
     @Override
     public void updateBook(Book book) throws LibraryException {
-        AbstractDAOFactory.getDefault().getBookDAO().update(book);
+        DAOFactoryService.getDefault().getBookDAO().update(book);
     }
 
     @Override
     public void deleteBooks(Collection<BookId> bookIds) throws LibraryException {
         for (BookId id : bookIds) {
-            AbstractDAOFactory.getDefault().getBookDAO().delete(id);
+            DAOFactoryService.getDefault().getBookDAO().delete(id);
         }
     }
 
     @Override
     public void returnBooks(ReaderId id, Collection<Book> books) throws LibraryException {
         for (Book b : books) {
-            AbstractDAOFactory.getDefault().getBorrowDAO().returnBook(id, b.getId());
+            DAOFactoryService.getDefault().getBorrowDAO().returnBook(id, b.getId());
         }
     }
 
     @Override
     public void borrowBooks(ReaderId id, Collection<Book> books) throws LibraryException {
         for (Book b : books) {
-            AbstractDAOFactory.getDefault().getBorrowDAO().borrowBook(id, b.getId());
+            DAOFactoryService.getDefault().getBorrowDAO().borrowBook(id, b.getId());
         }
     }
 

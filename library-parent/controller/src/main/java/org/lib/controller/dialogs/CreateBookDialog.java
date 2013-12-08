@@ -7,7 +7,7 @@ package org.lib.controller.dialogs;
 import java.awt.GridLayout;
 import org.lib.utils.ValidatedTF;
 import javax.swing.JLabel;
-import org.lib.business.LibraryFacade;
+import org.lib.business.LibraryFacadeService;
 import org.lib.utils.LibraryException;
 import org.lib.utils.Messages;
 import org.lib.view.MainFrame;
@@ -46,7 +46,7 @@ public final class CreateBookDialog extends AbstractLibraryDialog {
     @Override
     public void okAction() {
         try {
-            LibraryFacade.getDefault().createBook(title.getText());
+            LibraryFacadeService.getDefault().createBook(title.getText());
             MainFrame.getInstance().refresh();
         } catch (LibraryException le) {
             MainFrame.getInstance().showError(le);

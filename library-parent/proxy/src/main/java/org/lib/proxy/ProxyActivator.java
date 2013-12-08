@@ -2,7 +2,7 @@ package org.lib.proxy;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.lib.business.LibraryFacade;
+import org.lib.business.LibraryFacadeService;
 import org.lib.proxy.impl.LibraryFacadeProxy;
 import org.lib.view.MainFrame;
 import org.osgi.framework.BundleActivator;
@@ -15,7 +15,7 @@ public class ProxyActivator implements BundleActivator {
         Logger.getLogger(getClass().getName()).log(Level.INFO, getClass().getName());
         MainFrame.getInstance().addActionToMenu(new ConnectAction());
         MainFrame.getInstance().addActionToMenu(new DisconnectAction());
-        context.registerService(LibraryFacade.class,
+        context.registerService(LibraryFacadeService.class,
                 new LibraryFacadeProxy(), null);
     }
 

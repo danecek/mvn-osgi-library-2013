@@ -5,7 +5,7 @@
 package org.lib.protocol;
 
 import javax.xml.bind.annotation.XmlRootElement;
-import org.lib.business.LibraryFacade;
+import org.lib.business.LibraryFacadeService;
 import org.lib.utils.LibraryException;
 
 /**
@@ -19,7 +19,7 @@ public class GetReaders extends LibraryCommand {
     }
 
     @Override
-    public Readers execute(LibraryFacade libraryFacade) throws LibraryException {
+    public Readers execute(LibraryFacadeService libraryFacade) throws LibraryException {
         return new Readers(libraryFacade.getReaders());
     }
 }

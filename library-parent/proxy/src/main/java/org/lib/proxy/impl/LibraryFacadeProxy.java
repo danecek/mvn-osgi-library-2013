@@ -5,7 +5,7 @@
 package org.lib.proxy.impl;
 
 import java.util.Collection;
-import org.lib.business.LibraryFacade;
+import org.lib.business.LibraryFacadeService;
 import org.lib.connection.ConnectionService;
 import org.lib.model.Address;
 import org.lib.model.Book;
@@ -24,7 +24,7 @@ import org.lib.utils.LibraryException;
  *
  * @author danecek
  */
-public class LibraryFacadeProxy extends LibraryFacade {
+public class LibraryFacadeProxy extends LibraryFacadeService {
 
     public LibraryFacadeProxy() {
     }

@@ -20,9 +20,9 @@ public class LibraryFacadeTest {
     @org.junit.Test
     public void testCreateReader() throws Exception {
         System.out.println("createReader");
-        LibraryFacade.getDefault().createReader("Novak", new Address("Praha"));
-        LibraryFacade.getDefault().createReader("Svoboda", new Address("Praha"));
-        Collection<Reader> readers = LibraryFacade.getDefault().getReaders();
+        LibraryFacadeService.getDefault().createReader("Novak", new Address("Praha"));
+        LibraryFacadeService.getDefault().createReader("Svoboda", new Address("Praha"));
+        Collection<Reader> readers = LibraryFacadeService.getDefault().getReaders();
         //  assertTrue(readers.containsAll(Arrays.asList(novak, svoboda)));
 
     }

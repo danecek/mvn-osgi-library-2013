@@ -4,7 +4,7 @@
  */
 package org.lib.integration.impl;
 
-import org.lib.integration.AbstractDAOFactory;
+import org.lib.integration.DAOFactoryService;
 import org.lib.integration.BookDAO;
 import org.lib.integration.BorrowDAO;
 import org.lib.integration.ReaderDAO;
@@ -13,7 +13,7 @@ import org.lib.integration.ReaderDAO;
  *
  * @author danecek
  */
-public class DAOFactoryDefault extends AbstractDAOFactory {
+public class DAOFactoryDefault extends DAOFactoryService {
 
     private ReaderDAO readerDAO;
     private BookDAO bookDAO;
