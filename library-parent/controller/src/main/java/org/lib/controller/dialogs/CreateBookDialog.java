@@ -27,8 +27,8 @@ public final class CreateBookDialog extends AbstractLibraryDialog {
         getContent().add(new JLabel(Messages.Title.cm() + ": "));
         getContent().add(title);
         pack();
-        setVisible(true);
         validateDialog();
+        setVisible(true);
     }
 
     @Override
@@ -39,8 +39,6 @@ public final class CreateBookDialog extends AbstractLibraryDialog {
         }
         clearError();
         return true;
-
-
     }
 
     @Override
