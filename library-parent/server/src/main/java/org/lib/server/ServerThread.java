@@ -5,18 +5,15 @@
 package org.lib.server;
 
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.lib.business.LibraryFacadeService;
 import org.lib.model.Book;
 import org.lib.model.BookId;
-import org.lib.protocol.Disconnect;
 import org.lib.protocol.LibraryCommand;
-import org.lib.utils.LibraryException;
 
 /**
  *
@@ -28,48 +25,28 @@ public class ServerThread extends Thread {
         Book.class,
         BookId.class
     };
+    private ServerSocket ss;
+    ExecutorService pool = Executors.newFixedThreadPool(1000);
 
     public ServerThread() {
-        //   new Book(new BookId(1), null);
-//        setUncaughtExceptionHandler(new UncaughtExceptionHandler() {
-//            @Override
-//            public void uncaughtException(Thread thread, Throwable thrwbl) {
-//                System.out.println("internal error!!!");
-//            }
-//        });
+        try {
+            ss = new ServerSocket(LibraryCommand.PORT);
+        } catch (IOException ex) {
+            Logger.getLogger(ServerThread.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public void run() {
-        try {
-            ServerSocket ss = new ServerSocket(LibraryCommand.PORT);
-            Logger.getLogger(ServerThread.class.getName()).log(Level.INFO, "waiting for client");
-            try (Socket s = ss.accept();
-                    ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream())) {
-                    ObjectInputStream ois = new ObjectInputStream(s.getInputStream());
-                for (;;) {
-                    Logger.getLogger(ServerThread.class.getName()).log(Level.INFO, "waiting for command");
-                    LibraryCommand comm = (LibraryCommand) ois.readObject();
-                    Logger.getLogger(ServerThread.class.getName()).log(Level.INFO, "command: " + comm);
-                    if (comm instanceof Disconnect) {
-                        break;
-                    }
-                    Object result;
-                    try {
-                        result = comm.execute(LibraryFacadeService.getDefault());
-                    } catch (LibraryException ex) {
-                        result = ex;
-                    }
-                    Logger.getLogger(ServerThread.class.getName()).log(Level.INFO, "result: " + result);
-                    oos.writeObject(result);
-                    oos.flush();
-                }
-
-            } catch (ClassNotFoundException ex) {
+        for (;;) {
+            try {
+                Logger.getLogger(ServerThread.class.getName()).log(Level.INFO, "waiting for client");
+                Socket s = ss.accept();
+                pool.execute(new ClientTask(s));
+            } catch (IOException ex) {
                 Logger.getLogger(ServerThread.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (IOException ex) {
-            Logger.getLogger(ServerThread.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 }

@@ -45,4 +45,12 @@ public class DAOFactoryDefault extends DAOFactoryService {
         }
         return borrowDAO;
     }
+
+    @Override
+    public void commit() {
+    }
+
+    @Override
+    public void rollback() {
+    }
 }
