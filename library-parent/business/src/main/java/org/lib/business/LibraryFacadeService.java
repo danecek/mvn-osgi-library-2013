@@ -18,7 +18,7 @@ import org.osgi.util.tracker.ServiceTracker;
  *
  * @author danecek
  */
-public abstract class LibraryFacadeService {
+public abstract class LibraryFacadeService implements LibraryFacadeInterface {
 
     private static ServiceTracker st;
     private static LibraryFacadeService libraryFacade;
@@ -40,26 +40,4 @@ public abstract class LibraryFacadeService {
     public static void setSt(ServiceTracker aSt) {
         st = aSt;
     }
-
-    public abstract void createReader(String name, Address address) throws LibraryException;
-
-    public abstract Collection<Reader> getReaders() throws LibraryException;
-
-    public abstract void updateReader(Reader reader) throws LibraryException;
-
-    public abstract void deleteReader(ReaderId id) throws LibraryException;
-
-    public abstract BookId createBook(String title) throws LibraryException;
-
-    public abstract void updateBook(Book book) throws LibraryException;
-
-    public abstract Collection<Book> getBooks() throws LibraryException;
-
-    public abstract void deleteBooks(Collection<BookId> bookIds) throws LibraryException;
-
-    public abstract void returnBooks(ReaderId id, Collection<Book> books) throws LibraryException;
-
-    public abstract void borrowBooks(ReaderId id, Collection<Book> books) throws LibraryException;
-
-    public abstract boolean isAvailable();
 }

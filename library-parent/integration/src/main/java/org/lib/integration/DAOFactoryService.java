@@ -39,4 +39,8 @@ public abstract class DAOFactoryService {
         }
         return instance;
     }
+
+    public abstract void commit();
+
+    public abstract void rollback();
 }

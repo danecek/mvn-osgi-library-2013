@@ -71,7 +71,8 @@ public class DerbyDAOFactory extends DAOFactoryService {
             new org.apache.derby.jdbc.EmbeddedDriver();
             // System.out.println(ed.getClass().getClassLoader());
             //   System.out.println(getClass().getClassLoader());
-            dbConnection = DriverManager.getConnection("jdbc:derby:/home/danecek/libraryDB; create=true");
+            String url = "jdbc:derby:" + System.getProperty("user.home") + "/libraryDB; create=true";
+            dbConnection = DriverManager.getConnection(url);
         } catch (SQLException ex) {
             Logger.getLogger(DerbyDAOFactory.class.getName()).log(Level.SEVERE, null, ex);
 //        } catch (ClassNotFoundException ex) {
@@ -106,5 +107,22 @@ public class DerbyDAOFactory extends DAOFactoryService {
      */
     public Connection getDbConnection() {
         return dbConnection;
+    }
+
+    @Override
+    public void commit() {
+        try {
+            dbConnection.commit();
+        } catch (SQLException ex) {
+            Logger.getLogger(DerbyDAOFactory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    @Override
+    public void rollback() {
+        try {
+            dbConnection.rollback();
+        } catch (SQLException ex) {
+            Logger.getLogger(DerbyDAOFactory.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

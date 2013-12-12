@@ -6,7 +6,7 @@ package org.lib.protocol;
 
 import java.util.Collection;
 import javax.xml.bind.annotation.XmlRootElement;
-import org.lib.business.LibraryFacadeService;
+import org.lib.business.LibraryFacadeInterface;
 import org.lib.model.BookId;
 import org.lib.utils.LibraryException;
 
@@ -27,7 +27,7 @@ public class DeleteBooks extends LibraryCommand {
     }
 
     @Override
-    public Object execute(LibraryFacadeService libraryFacade) throws LibraryException {
+    public Object execute(LibraryFacadeInterface libraryFacade) throws LibraryException {
         libraryFacade.deleteBooks(getBookIds());
         return OK;
     }

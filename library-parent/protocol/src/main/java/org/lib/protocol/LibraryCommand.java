@@ -5,7 +5,7 @@
 package org.lib.protocol;
 
 import java.io.Serializable;
-import org.lib.business.LibraryFacadeService;
+import org.lib.business.LibraryFacadeInterface;
 import org.lib.utils.LibraryException;
 
 /**
