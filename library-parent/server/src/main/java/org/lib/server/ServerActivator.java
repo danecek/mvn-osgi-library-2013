@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
-public class Activator implements BundleActivator {
+public class ServerActivator implements BundleActivator {
 
     @Override
     public void start(BundleContext context) throws Exception {

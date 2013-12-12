@@ -30,8 +30,8 @@ import org.lib.xmlconnection.JAXBUtils;
  */
 public class JAXBConnection extends ConnectionService {
 
-    private DataInputStream ois;
-    private DataOutputStream oos;
+    private DataInputStream dis;
+    private DataOutputStream dos;
     private Socket socket;
     JAXBContext jc;
     Marshaller marshaller;
@@ -60,9 +60,9 @@ public class JAXBConnection extends ConnectionService {
     public void connect(InetAddress ia, int port) throws LibraryException {
         try {
             socket = new Socket(ia, port);
-            socket.setSoTimeout(3000);
-            oos = new DataOutputStream(socket.getOutputStream());
-            ois = new DataInputStream(socket.getInputStream());
+           // socket.setSoTimeout(3000);
+            dos = new DataOutputStream(socket.getOutputStream());
+            dis = new DataInputStream(socket.getInputStream());
 
         } catch (IOException ex) {
             throw new LibraryException(ex);
@@ -73,8 +73,8 @@ public class JAXBConnection extends ConnectionService {
     public void disconnect() {
         try {
             send(new Disconnect());
-            oos.close();
-            ois.close();
+            dos.close();
+            dis.close();
             socket.close();
             socket = null;
         } catch (IOException | LibraryException ex) {
@@ -88,11 +88,11 @@ public class JAXBConnection extends ConnectionService {
             throw new LibraryException(Messages.No_connection.cm());
         }
         try {
-            JAXBUtils.marshallMessage(libraryCommand, marshaller, oos);
+            JAXBUtils.marshallMessage(libraryCommand, marshaller, dos);
             if (libraryCommand instanceof Disconnect) {
                 return (T) new Ok();
             }
-            Object response = JAXBUtils.unmarshalMessage(unmarshaller, ois);
+            Object response = JAXBUtils.unmarshalMessage(unmarshaller, dis);
             logger.log(Level.INFO, "response: {0}", response);
             if (response instanceof LibraryException) {
                 throw (LibraryException) response;

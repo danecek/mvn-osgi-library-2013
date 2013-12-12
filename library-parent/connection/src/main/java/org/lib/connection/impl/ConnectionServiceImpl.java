@@ -38,7 +38,7 @@ public class ConnectionServiceImpl extends ConnectionService {
     public void connect(InetAddress ia, int port) throws LibraryException {
         try {
             socket = new Socket(ia, port);
-            socket.setSoTimeout(3000);
+           // socket.setSoTimeout(3000); !!!
             oos = new ObjectOutputStream(socket.getOutputStream());
             ois = new ObjectInputStream(socket.getInputStream());
 

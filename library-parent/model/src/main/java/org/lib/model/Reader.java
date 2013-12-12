@@ -65,4 +65,10 @@ public class Reader  implements Serializable  {
     public void setAddress(Address address) {
         this.address = address;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s(%d: %s, %s)", getClass().getSimpleName(), id, name, address);
+    }
+    
 }

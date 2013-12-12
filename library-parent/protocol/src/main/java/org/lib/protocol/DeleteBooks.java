@@ -45,4 +45,9 @@ public class DeleteBooks extends LibraryCommand {
     public void setBookIds(Collection<BookId> bookIds) {
         this.bookIds = bookIds;
     }
+    
+        @Override
+    public String toString() {
+        return String.format("%s(%s)", getClass().getSimpleName(), bookIds.toString());
+    }
 }

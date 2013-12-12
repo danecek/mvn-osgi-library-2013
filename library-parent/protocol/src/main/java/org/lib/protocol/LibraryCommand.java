@@ -14,8 +14,13 @@ import org.lib.utils.LibraryException;
  */
 public abstract class LibraryCommand implements Serializable {
 
-    public static final Ok OK =  new Ok();
+    public static final Ok OK = new Ok();
     public static final int PORT = 3456;
 
     public abstract Object execute(LibraryFacadeService libraryFacade) throws LibraryException;
+
+    @Override
+    public String toString() {
+        return String.format("%s", getClass().getSimpleName());
+    }
 }

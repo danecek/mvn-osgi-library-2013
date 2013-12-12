@@ -51,7 +51,7 @@ public class JAXBUtils {
         marshaller.marshal(message, baos);
         byte[] buff = baos.toByteArray();
         String xmlMessage = new String(buff, StandardCharsets.UTF_8);
-        logger.log(Level.INFO, "xml message: {0}", xmlMessage);
+        logger.log(Level.INFO, "marshalled message: {0}", xmlMessage);
         dos.writeInt(buff.length);
         dos.write(buff);
         dos.flush();
@@ -62,8 +62,7 @@ public class JAXBUtils {
         int len = dis.readInt();
         byte[] buff = new byte[len];
         dis.readFully(buff);
-        String xmlMessage = new String(buff, StandardCharsets.UTF_8);
-        logger.log(Level.INFO, "xml message: {0}", xmlMessage);
+        logger.log(Level.INFO, "unmarshalled message: {0}", new String(buff, StandardCharsets.UTF_8));
         return u.unmarshal(new ByteArrayInputStream(buff));
     }
 }

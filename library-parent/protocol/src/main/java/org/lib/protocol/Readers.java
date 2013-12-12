@@ -39,4 +39,9 @@ public class Readers implements Serializable {
     public void setReaders(Collection<Reader> readers) {
         this.readers = readers;
     }
+
+    @Override
+    public String toString() {
+        return readers.toString(); //To change body of generated methods, choose Tools | Templates.
+    }
 }

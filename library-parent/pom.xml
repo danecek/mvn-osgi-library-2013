@@ -22,6 +22,7 @@
         <module>connection</module>
         <module>xmlconnection</module>
         <module>xmlserver</module>
+        <module>nioserver</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

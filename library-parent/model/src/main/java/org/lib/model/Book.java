@@ -10,7 +10,7 @@ import java.io.Serializable;
  *
  * @author danecek
  */
-public class Book  implements Serializable {
+public class Book implements Serializable {
 
     private BookId id;
     private String title;
@@ -49,5 +49,10 @@ public class Book  implements Serializable {
      */
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s(%d: %s)", getClass().getSimpleName(), id, title);
     }
 }

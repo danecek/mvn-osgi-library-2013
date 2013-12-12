@@ -30,13 +30,7 @@ public class ServerThread extends Thread {
     };
 
     public ServerThread() {
-        //   new Book(new BookId(1), null);
-//        setUncaughtExceptionHandler(new UncaughtExceptionHandler() {
-//            @Override
-//            public void uncaughtException(Thread thread, Throwable thrwbl) {
-//                System.out.println("internal error!!!");
-//            }
-//        });
+
     }
 
     @Override

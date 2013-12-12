@@ -33,4 +33,10 @@ public class Books implements Serializable {
     public Collection<Book> getBooks() {
         return books;
     }
+
+    @Override
+    public String toString() {
+        return books.toString(); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }
