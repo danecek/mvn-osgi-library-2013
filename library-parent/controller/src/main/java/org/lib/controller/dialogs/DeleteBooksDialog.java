@@ -23,9 +23,9 @@ import org.lib.view.BookModel;
  * @author danecek
  */
 public final class DeleteBooksDialog extends AbstractLibraryDialog {
-
+    
     private Collection<Book> books;
-
+    
     public DeleteBooksDialog(final Collection<Book> books) {
         super(Messages.Delete_Books.cm());
         this.books = books;
@@ -38,12 +38,12 @@ public final class DeleteBooksDialog extends AbstractLibraryDialog {
         pack();
         setVisible(true);
     }
-
+    
     @Override
     public boolean validateDialog() {
         return true;
     }
-
+    
     @Override
     public void okAction() {
         try {
