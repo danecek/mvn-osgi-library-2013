@@ -4,10 +4,11 @@
  */
 package org.lib.controller.dialogs;
 
-import java.awt.GridLayout;
+import java.awt.GridBagLayout;
 import org.lib.utils.ValidatedTF;
 import javax.swing.JLabel;
 import org.lib.business.LibraryFacadeService;
+import org.lib.utils.GBCBuilder;
 import org.lib.utils.LibraryException;
 import org.lib.utils.Messages;
 import org.lib.view.MainFrame;
@@ -23,9 +24,9 @@ public final class CreateBookDialog extends AbstractLibraryDialog {
     public CreateBookDialog() {
         super(Messages.Create_Book.cm());
         title = new ValidatedTF(this);
-        getContent().setLayout(new GridLayout(0, 2));
-        getContent().add(new JLabel(Messages.Title.cm() + ": "));
-        getContent().add(title);
+        getContent().setLayout(new GridBagLayout());
+        getContent().add(new JLabel(Messages.Title.cm() + ": "), new GBCBuilder().build());
+        getContent().add(title, new GBCBuilder().setXRel().build());
         pack();
         validateDialog();
         setVisible(true);

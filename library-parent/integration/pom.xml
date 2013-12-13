@@ -14,11 +14,11 @@
 
     <name>integration OSGi Bundle</name>
 
-    <dependencies>
+    <dependencies> 
         <dependency>
-            <groupId>org.osgi</groupId>
+            <groupId>org.apache.felix</groupId>
             <artifactId>org.osgi.core</artifactId>
-        </dependency>        
+        </dependency>
         <dependency>
             <groupId>org.apache.felix</groupId>
             <artifactId>org.apache.felix.framework</artifactId>

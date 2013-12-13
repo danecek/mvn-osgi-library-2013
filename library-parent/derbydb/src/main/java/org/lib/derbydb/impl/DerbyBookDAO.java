@@ -38,11 +38,10 @@ public class DerbyBookDAO implements BookDAO {
     }
 
     @Override
-    public BookId create(String title) throws LibraryException {
+    public void create(String title) throws LibraryException {
         try {
             createPS.setString(1, title);
             createPS.execute();
-            return new BookId(1);//rs.getInt(1));
         } catch (SQLException ex) {
             throw new LibraryException(ex);
         }

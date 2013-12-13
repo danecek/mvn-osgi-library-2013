@@ -4,13 +4,15 @@
  */
 package org.lib.proxy;
 
-import java.awt.GridLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import javax.swing.JLabel;
 import org.lib.connection.ConnectionService;
 import org.lib.controller.dialogs.AbstractLibraryDialog;
 import org.lib.protocol.LibraryCommand;
+import org.lib.utils.GBCBuilder;
 import org.lib.utils.LibraryException;
 import org.lib.utils.Messages;
 import org.lib.utils.ValidatedTF;
@@ -27,11 +29,15 @@ public final class ConnectionDialog extends AbstractLibraryDialog {
 
     public ConnectionDialog() {
         super(Messages.Connection_Dialog.cm());
-        getContent().setLayout(new GridLayout(2, 2));
-        getContent().add(new JLabel(Messages.Host.cm() + ": "));
-        getContent().add(host = new ValidatedTF(this, "localhost"));
-        getContent().add(new JLabel(Messages.Port.cm() + ": "));
-        getContent().add(port = new ValidatedTF(this, Integer.toString(LibraryCommand.PORT)));
+        getContent().setLayout(new GridBagLayout());
+        getContent().add(new JLabel(Messages.Host.cm() + ": "),
+                new GBCBuilder().build());
+        getContent().add(host = new ValidatedTF(this, "localhost"),
+                new GBCBuilder().setXRel().build());
+        getContent().add(new JLabel(Messages.Port.cm() + ": "),
+                new GBCBuilder().setY(1).build());
+        getContent().add(port = new ValidatedTF(this, Integer.toString(LibraryCommand.PORT)),
+                new GBCBuilder().setY(1).setX(GridBagConstraints.RELATIVE).build());
         validateDialog();
         pack();
         setVisible(true);

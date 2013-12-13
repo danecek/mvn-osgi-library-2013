@@ -13,4 +13,9 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 public class Ok implements Serializable {
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName();
+    }
 }

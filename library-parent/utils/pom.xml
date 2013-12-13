@@ -13,10 +13,9 @@
     <packaging>bundle</packaging>
 
     <name>utils OSGi Bundle</name>
-
     <dependencies>
         <dependency>
-            <groupId>org.osgi</groupId>
+            <groupId>org.apache.felix</groupId>
             <artifactId>org.osgi.core</artifactId>
         </dependency>
     </dependencies>

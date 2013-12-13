@@ -35,7 +35,6 @@ public class GBCBuilder {
 
         BOTH
     }
-
     GridBagConstraints gbc = new GridBagConstraints();
 
     public GBCBuilder(GridBagConstraints gbc) {
@@ -45,6 +44,10 @@ public class GBCBuilder {
     public GBCBuilder() {
         setInsets(5);
         setAnchor(Anchor.FIRST_LINE_START);
+    }
+
+    public GBCBuilder setXRel() {
+        return setX(GridBagConstraints.RELATIVE);
     }
 
     public GBCBuilder setX(int gridx) {
@@ -77,7 +80,7 @@ public class GBCBuilder {
         return this;
     }
 
-    public GBCBuilder setAnchor(Anchor anchor) {
+    public final GBCBuilder setAnchor(Anchor anchor) {
         switch (anchor) {
             case FIRST_LINE_START:
                 gbc.anchor = GridBagConstraints.FIRST_LINE_START;
@@ -128,7 +131,7 @@ public class GBCBuilder {
         return this;
     }
 
-    public GBCBuilder setInsets(int insets) {
+    public final GBCBuilder setInsets(int insets) {
         gbc.insets = new Insets(insets, insets, insets, insets);
         return this;
     }
@@ -148,8 +151,7 @@ public class GBCBuilder {
         return this;
     }
 
-    GridBagConstraints build() {
+    public GridBagConstraints build() {
         return gbc;
     }
-
 }

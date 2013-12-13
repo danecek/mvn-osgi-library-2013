@@ -14,30 +14,27 @@
 
     <name>derbydb OSGi Bundle</name>
 
-    <dependencies>
+    <dependencies>        
         <dependency>
-            <groupId>org.osgi</groupId>
+            <groupId>org.apache.felix</groupId>
             <artifactId>org.osgi.core</artifactId>
-        </dependency>        
+        </dependency>
         <dependency>
             <groupId>org.apache.derby</groupId>
             <artifactId>derby</artifactId>
-            <version>10.10.1.1</version>  
+            <version>10.1.1.0</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>utils</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>model</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>integration</artifactId>
-            <version>${project.version}</version>
         </dependency>
     </dependencies>
 

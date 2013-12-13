@@ -14,16 +14,14 @@
 
     <name>nioserver OSGi Bundle</name>
 
-    <dependencies>
+    <dependencies>            
         <dependency>
-            <groupId>org.osgi</groupId>
+            <groupId>org.apache.felix</groupId>
             <artifactId>org.osgi.core</artifactId>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>xmlconnection</artifactId>
-            <version>${project.version}</version>
         </dependency>
     </dependencies>
 

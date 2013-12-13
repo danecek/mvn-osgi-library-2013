@@ -53,6 +53,6 @@ public class Book implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("%s(%d: %s)", getClass().getSimpleName(), id, title);
+        return String.format("%s(%s: %s)", getClass().getSimpleName(), id.toString(), title);
     }
 }

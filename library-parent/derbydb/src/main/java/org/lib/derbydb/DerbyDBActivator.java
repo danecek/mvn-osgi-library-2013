@@ -12,7 +12,7 @@ public class DerbyDBActivator implements BundleActivator {
     @Override
     public void start(BundleContext context) throws Exception {
         Logger.getLogger(getClass().getName()).log(Level.INFO, getClass().getName());
-        context.registerService(DAOFactoryService.class,
+        context.registerService(DAOFactoryService.class.getName(),
                 new DerbyDAOFactory(context), null);
     }
 

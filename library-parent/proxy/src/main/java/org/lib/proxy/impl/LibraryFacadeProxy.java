@@ -50,8 +50,8 @@ public class LibraryFacadeProxy extends LibraryFacadeService {
     }
 
     @Override
-    public BookId createBook(String title) throws LibraryException {
-        return (BookId) ConnectionService.getDefault().send(new CreateBook(title));
+    public void createBook(String title) throws LibraryException {
+        ConnectionService.getDefault().send(new CreateBook(title));
     }
 
     @Override

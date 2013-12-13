@@ -20,7 +20,7 @@ public interface LibraryFacadeInterface {
 
     void borrowBooks(ReaderId id, Collection<Book> books) throws LibraryException;
 
-    BookId createBook(String title) throws LibraryException;
+    void createBook(String title) throws LibraryException;
 
     void createReader(String name, Address address) throws LibraryException;
 

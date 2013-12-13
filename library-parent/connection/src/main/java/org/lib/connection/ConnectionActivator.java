@@ -20,6 +20,8 @@ public class ConnectionActivator implements BundleActivator {
 
     @Override
     public void stop(BundleContext context) throws Exception {
-        ConnectionService.getDefault().disconnect();
+        if (ConnectionService.getDefault().isConnected()) {
+            ConnectionService.getDefault().disconnect();
+        }
     }
 }

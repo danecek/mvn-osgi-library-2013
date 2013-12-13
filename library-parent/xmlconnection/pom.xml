@@ -14,9 +14,9 @@
 
     <name>xmlconnection OSGi Bundle</name>
 
-    <dependencies>
+    <dependencies>            
         <dependency>
-            <groupId>org.osgi</groupId>
+            <groupId>org.apache.felix</groupId>
             <artifactId>org.osgi.core</artifactId>
         </dependency>
         <dependency>
@@ -36,7 +36,7 @@
                     <instructions>
                         <Bundle-Activator>org.lib.xmlconnection.XMLConnectionActivator</Bundle-Activator>
                         <Export-Package >org.lib.xmlconnection</Export-Package>
-                        <Private-Package>org.lib.impl.*,org.lib.xmlconnection.*</Private-Package>
+                        <Private-Package>org.lib.xmlconnection.impl.*</Private-Package>
                     </instructions>
                 </configuration>
             </plugin>

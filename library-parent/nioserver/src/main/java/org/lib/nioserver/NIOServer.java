@@ -13,8 +13,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.bind.JAXBContext;
@@ -25,7 +23,7 @@ import org.lib.business.LibraryFacadeService;
 import org.lib.protocol.Disconnect;
 import org.lib.protocol.LibraryCommand;
 import org.lib.utils.LibraryException;
-import org.lib.xmlconnection.JAXBUtils;
+import org.lib.protocol.JAXBUtils;
 
 /**
  *
@@ -33,7 +31,6 @@ import org.lib.xmlconnection.JAXBUtils;
  */
 class NIOServer implements Runnable {
 
-//    private ExecutorService pool;
     private Selector selector;
     static final Logger logger = Logger.getLogger(NIOServer.class.getName());
     private Unmarshaller unmarshaller;
@@ -72,15 +69,15 @@ class NIOServer implements Runnable {
                     byte[] ba = baos.toByteArray();
                     ByteBuffer outbb = ByteBuffer.allocate(ba.length + 4);
                     outbb.putInt(ba.length);
-                //    info(bb.toString());
+                    //    info(bb.toString());
                     outbb.put(ba);
                     outbb.flip();
-                  //  info(outbb.toString());
+                    //  info(outbb.toString());
                     while (outbb.remaining() > 0) {
-                     //   info(outbb.toString());
+                        //   info(outbb.toString());
                         sc.write(outbb);
                     }
-                //    info("response sent");
+                    //    info("response sent");
                 }
 
             }
@@ -90,13 +87,11 @@ class NIOServer implements Runnable {
 
     public NIOServer(int port) {
         try {
-         //   pool = Executors.newCachedThreadPool();
             selector = Selector.open();
             ServerSocketChannel ssc = ServerSocketChannel.open();
             ssc.bind(new InetSocketAddress(port));
             ssc.configureBlocking(false);
             ssc.register(selector, SelectionKey.OP_ACCEPT);
-          //  pool.submit(this);
             JAXBContext jc = JAXBUtils.createJAXBContext();
             unmarshaller = jc.createUnmarshaller();
             marshaller = jc.createMarshaller();
@@ -105,8 +100,6 @@ class NIOServer implements Runnable {
         } catch (JAXBException ex) {
             Logger.getLogger(NIOServer.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-
     }
 
     private void info(String mess) {

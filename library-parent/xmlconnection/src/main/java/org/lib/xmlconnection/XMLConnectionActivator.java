@@ -9,7 +9,7 @@ public class XMLConnectionActivator implements BundleActivator {
 
     @Override
     public void start(BundleContext context) throws Exception {
-        context.registerService(ConnectionService.class, new JAXBConnection(), null);
+        context.registerService(ConnectionService.class.getName(), new JAXBConnection(), null);
     }
 
     @Override

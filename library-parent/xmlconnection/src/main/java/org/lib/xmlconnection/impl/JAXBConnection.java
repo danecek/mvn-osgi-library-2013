@@ -22,7 +22,7 @@ import org.lib.protocol.LibraryCommand;
 import org.lib.protocol.Ok;
 import org.lib.utils.LibraryException;
 import org.lib.utils.Messages;
-import org.lib.xmlconnection.JAXBUtils;
+import org.lib.protocol.JAXBUtils;
 
 /**
  *

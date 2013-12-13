@@ -19,7 +19,7 @@ public class ValidatedTF extends JTextField {
     }
 
     public ValidatedTF(final Validator validator, String init) {
-        this(validator, init, 5);
+        this(validator, init, 10);
     }
 
     public ValidatedTF(final Validator validator, String init, int cols) {

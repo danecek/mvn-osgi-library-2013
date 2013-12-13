@@ -60,7 +60,7 @@ public class DerbyDAOFactory extends DAOFactoryService {
     }
 
     private Connection createConnection() {
-        Connection dbConnection = null;
+        Connection dbCon = null;
         try {
             //  context.getBundle().loadClass("org.apache.derby.jdbc.EmbeddedDriver");
             // getClass().getClassLoader().loadClass("org.apache.derby.jdbc.EmbeddedDriver");
@@ -72,13 +72,11 @@ public class DerbyDAOFactory extends DAOFactoryService {
             // System.out.println(ed.getClass().getClassLoader());
             //   System.out.println(getClass().getClassLoader());
             String url = "jdbc:derby:" + System.getProperty("user.home") + "/libraryDB; create=true";
-            dbConnection = DriverManager.getConnection(url);
+            dbCon = DriverManager.getConnection(url);
         } catch (SQLException ex) {
             Logger.getLogger(DerbyDAOFactory.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (ClassNotFoundException ex) {
-//            Logger.getLogger(DerbyDAOFactory.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return dbConnection;
+        return dbCon;
     }
 
     @Override
@@ -103,7 +101,7 @@ public class DerbyDAOFactory extends DAOFactoryService {
     }
 
     /**
-     * @return the dbConnection
+     * @return the dbCon
      */
     public Connection getDbConnection() {
         return dbConnection;
@@ -117,6 +115,7 @@ public class DerbyDAOFactory extends DAOFactoryService {
             Logger.getLogger(DerbyDAOFactory.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     @Override
     public void rollback() {
         try {

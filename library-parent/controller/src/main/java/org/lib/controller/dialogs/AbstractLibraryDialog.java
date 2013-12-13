@@ -10,6 +10,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.BorderFactory;
@@ -73,13 +75,22 @@ public abstract class AbstractLibraryDialog extends JDialog implements Validator
     public AbstractLibraryDialog(String title) {
         super(MainFrame.getInstance(), title, true);
         int i = 5;
-        content.setBorder(BorderFactory.createEmptyBorder(i, i, i, i));
-        add(createErrorPanel(), BorderLayout.NORTH);
-        add(content, BorderLayout.CENTER);
-        add(createButtonPanel(), BorderLayout.SOUTH);
+        JPanel interior = new JPanel(new BorderLayout(i, i));
+        interior.setBorder(BorderFactory.createEmptyBorder(i, i, i, i));
+        add(interior);
+        //   content.setBorder(BorderFactory.createEmptyBorder(i, i, i, i));
+        interior.add(createErrorPanel(), BorderLayout.PAGE_START);
+        interior.add(content, BorderLayout.LINE_START);
+        interior.add(createButtonPanel(), BorderLayout.PAGE_END);
         Point loc = MainFrame.getInstance().getLocation();
         loc.translate(200, 100);
         setLocation(loc);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                AbstractLibraryDialog.this.dispose();
+            }
+        });
     }
 
     public void error(String message) {

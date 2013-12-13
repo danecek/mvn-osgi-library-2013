@@ -16,7 +16,7 @@ import org.osgi.util.tracker.ServiceTracker;
  */
 public abstract class ConnectionService {
 
-    public static final int DEFAULT_PORT = 3456;
+   // public static final int DEFAULT_PORT = 3456;
     
     private static ConnectionService instance;
     private static ServiceTracker serviceTracker;

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import javax.swing.JOptionPane;
 import org.lib.business.LibraryFacadeService;
+import org.lib.controller.dialogs.DeleteBooksDialog;
 import org.lib.model.Book;
 import org.lib.model.BookId;
 import org.lib.utils.LibraryException;
@@ -38,19 +39,7 @@ public class DeleteBooksAction extends AbstractLibraryAction {
         if (books.isEmpty()) {
             MainFrame.getInstance().showError(Messages.No_selected_book.cm());
         } else {
-            try {
-                int result = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "?"); // todo
-                if (result == JOptionPane.YES_OPTION) {
-                    ArrayList<BookId> bookIds = new ArrayList<>();
-                    for (Book book : books) {
-                        bookIds.add(book.getId());
-                    }
-                    LibraryFacadeService.getDefault().deleteBooks(bookIds);
-                    MainFrame.getInstance().refresh();
-                }
-            } catch (LibraryException ex) {
-                MainFrame.getInstance().showError(ex);
-            }
+            new DeleteBooksDialog(books);
         }
     }
 }

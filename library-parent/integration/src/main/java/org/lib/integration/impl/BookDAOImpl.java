@@ -34,11 +34,10 @@ public final class BookDAOImpl implements BookDAO {
     }
 
     @Override
-    public BookId create(String title) throws LibraryException {
+    public void create(String title) throws LibraryException {
         BookId id = new BookId(++keyCount);
         Book book = new Book(id, title);
         books.put(book.getId(), book);
-        return id;
     }
 
     @Override

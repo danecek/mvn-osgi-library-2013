@@ -15,7 +15,7 @@ public class ProxyActivator implements BundleActivator {
         Logger.getLogger(getClass().getName()).log(Level.INFO, getClass().getName());
         MainFrame.getInstance().addActionToMenu(new ConnectAction());
         MainFrame.getInstance().addActionToMenu(new DisconnectAction());
-        context.registerService(LibraryFacadeService.class,
+        context.registerService(LibraryFacadeService.class.getName(),
                 new LibraryFacadeProxy(), null);
     }
 

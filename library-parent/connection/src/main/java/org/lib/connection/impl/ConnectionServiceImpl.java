@@ -13,6 +13,7 @@ import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.lib.model.Reader;
+import org.lib.protocol.Disconnect;
 import org.lib.protocol.LibraryCommand;
 import org.lib.utils.LibraryException;
 import org.lib.utils.Messages;
@@ -38,7 +39,7 @@ public class ConnectionServiceImpl extends ConnectionService {
     public void connect(InetAddress ia, int port) throws LibraryException {
         try {
             socket = new Socket(ia, port);
-           // socket.setSoTimeout(3000); !!!
+            // socket.setSoTimeout(3000); !!!
             oos = new ObjectOutputStream(socket.getOutputStream());
             ois = new ObjectInputStream(socket.getInputStream());
 
@@ -50,13 +51,13 @@ public class ConnectionServiceImpl extends ConnectionService {
     @Override
     public void disconnect() {
         if (isConnected()) {
-            try {
-                oos.close();
-                ois.close();
-                socket.close();
-                socket = null;
-            } catch (IOException ex) {
-                Logger.getLogger(ConnectionServiceImpl.class.getName()).log(Level.INFO, null, ex);
+            try (
+                    ObjectInputStream ois = this.ois;
+                    ObjectOutputStream oos = this.oos;
+                    Socket socket = this.socket) {
+                send(new Disconnect());
+            } catch (LibraryException | IOException ex) {
+                Logger.getLogger(ConnectionServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -72,9 +73,12 @@ public class ConnectionServiceImpl extends ConnectionService {
         try {
             oos.writeObject(libraryCommand);
             oos.flush();
-            Object response = ois.readObject();
-            if (response instanceof LibraryException) {
-                throw (LibraryException) response;
+            Object response = null;
+            if (!(libraryCommand instanceof Disconnect)) {
+                response = ois.readObject();
+                if (response instanceof LibraryException) {
+                    throw (LibraryException) response;
+                }
             }
             return response;
         } catch (IOException ex) {

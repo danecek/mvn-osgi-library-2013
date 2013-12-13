@@ -7,19 +7,12 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.library</groupId>
+    <groupId>org.lib</groupId>
     <artifactId>grizzlyserver</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>bundle</packaging>
 
     <name>grizzlyserver OSGi Bundle</name>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.core</artifactId>
-        </dependency>
-    </dependencies>
 
     <build>
         <plugins>
@@ -30,12 +23,17 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Bundle-Activator>org.library.grizzlyserver.Activator</Bundle-Activator>
+                        <Bundle-Activator>org.lib.grizzlyserver.Activator</Bundle-Activator>
                         <Export-Package />
                     </instructions>
                 </configuration>
             </plugin>
         </plugins>
     </build>
- 
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.apache.felix.framework</artifactId>
+        </dependency>
+    </dependencies>
 </project>

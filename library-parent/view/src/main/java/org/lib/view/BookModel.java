@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.lib.view.impl;
+package org.lib.view;
 
 import java.text.Collator;
 import java.util.ArrayList;
@@ -11,14 +11,12 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 import org.lib.business.LibraryFacadeService;
 import org.lib.model.Book;
 import org.lib.utils.LibraryException;
+import org.lib.view.impl.Refreshable;
 import static org.lib.utils.Messages.*;
-import org.lib.view.MainFrame;
 
 /**
  *
@@ -26,13 +24,19 @@ import org.lib.view.MainFrame;
  */
 public final class BookModel extends AbstractTableModel implements Refreshable {
 
-    List<Book> books = new ArrayList<>();
+    private List<Book> books;
 
-    public BookModel() {
-        MainFrame.addRefreshable(this);
+    public BookModel(Collection<Book> books) {
+        this.books = new ArrayList<>(books);
     }
 
-    Collection<Book> getBooks(int[] rows) {
+    public BookModel() {
+        this(new ArrayList<Book>());
+    }
+    
+    
+
+    public Collection<Book> getBooks(int[] rows) {
         ArrayList<Book> sbs = new ArrayList<>();
         for (int row : rows) {
             sbs.add(books.get(row));

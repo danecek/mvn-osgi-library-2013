@@ -16,9 +16,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.osgi</groupId>
+            <groupId>org.apache.felix</groupId>
             <artifactId>org.osgi.core</artifactId>
-        </dependency>
+        </dependency> 
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>business</artifactId>

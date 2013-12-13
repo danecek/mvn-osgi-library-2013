@@ -23,6 +23,7 @@ public class LibraryFacadeDefault extends LibraryFacadeService {
     @Override
     public void createReader(String name, Address address) throws LibraryException {
         DAOFactoryService.getDefault().getReaderDAO().create(name, address);
+        DAOFactoryService.getDefault().commit();
     }
 
     @Override
@@ -33,16 +34,19 @@ public class LibraryFacadeDefault extends LibraryFacadeService {
     @Override
     public void updateReader(Reader reader) throws LibraryException {
         DAOFactoryService.getDefault().getReaderDAO().update(reader);
+        DAOFactoryService.getDefault().commit();
     }
 
     @Override
     public void deleteReader(ReaderId id) throws LibraryException {
         DAOFactoryService.getDefault().getReaderDAO().delete(id);
+        DAOFactoryService.getDefault().commit();
     }
 
     @Override
-    public BookId createBook(String title) throws LibraryException {
-        return DAOFactoryService.getDefault().getBookDAO().create(title);
+    public void createBook(String title) throws LibraryException {
+        DAOFactoryService.getDefault().getBookDAO().create(title);
+        DAOFactoryService.getDefault().commit();
     }
 
     @Override
@@ -53,6 +57,7 @@ public class LibraryFacadeDefault extends LibraryFacadeService {
     @Override
     public void updateBook(Book book) throws LibraryException {
         DAOFactoryService.getDefault().getBookDAO().update(book);
+        DAOFactoryService.getDefault().commit();
     }
 
     @Override
@@ -60,6 +65,7 @@ public class LibraryFacadeDefault extends LibraryFacadeService {
         for (BookId id : bookIds) {
             DAOFactoryService.getDefault().getBookDAO().delete(id);
         }
+        DAOFactoryService.getDefault().commit();
     }
 
     @Override
@@ -79,5 +85,5 @@ public class LibraryFacadeDefault extends LibraryFacadeService {
     @Override
     public boolean isAvailable() {
         return true;
-}
+    }
 }

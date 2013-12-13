@@ -14,9 +14,9 @@
 
     <name>server OSGi Bundle</name>
 
-    <dependencies>
+    <dependencies>        
         <dependency>
-            <groupId>org.osgi</groupId>
+            <groupId>org.apache.felix</groupId>
             <artifactId>org.osgi.core</artifactId>
         </dependency>
         <dependency>
@@ -26,7 +26,6 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>business</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
@@ -39,7 +38,11 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>derbydb</artifactId>
-            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.apache.felix.framework</artifactId>
+            <version>4.2.1</version>
         </dependency>
     </dependencies>
 
@@ -53,7 +56,8 @@
                 <configuration>
                     <instructions>
                         <Bundle-Activator>org.lib.server.ServerActivator</Bundle-Activator>
-                        <Export-Package />
+                        <Export-Package >org.lib.server</Export-Package>
+                        <Private-Package>org.lib.server.*</Private-Package>
                     </instructions>
                 </configuration>
             </plugin>

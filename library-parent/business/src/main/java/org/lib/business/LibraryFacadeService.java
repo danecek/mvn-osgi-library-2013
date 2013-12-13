@@ -4,14 +4,7 @@
  */
 package org.lib.business;
 
-import java.util.Collection;
 import org.lib.business.impl.LibraryFacadeDefault;
-import org.lib.model.Address;
-import org.lib.model.Book;
-import org.lib.model.BookId;
-import org.lib.model.Reader;
-import org.lib.model.ReaderId;
-import org.lib.utils.LibraryException;
 import org.osgi.util.tracker.ServiceTracker;
 
 /**

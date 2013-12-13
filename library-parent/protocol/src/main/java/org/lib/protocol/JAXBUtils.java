@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.lib.xmlconnection;
+package org.lib.protocol;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -16,14 +16,6 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import org.lib.protocol.Books;
-import org.lib.protocol.CreateBook;
-import org.lib.protocol.DeleteBooks;
-import org.lib.protocol.Disconnect;
-import org.lib.protocol.GetBooks;
-import org.lib.protocol.GetReaders;
-import org.lib.protocol.Ok;
-import org.lib.protocol.Readers;
 
 /**
  *

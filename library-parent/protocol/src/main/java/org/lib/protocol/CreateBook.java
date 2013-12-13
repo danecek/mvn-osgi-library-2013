@@ -26,7 +26,8 @@ public class CreateBook extends LibraryCommand {
 
     @Override
     public Object execute(LibraryFacadeInterface libraryFacade) throws LibraryException {
-        return libraryFacade.createBook(getTitle());
+        libraryFacade.createBook(getTitle());
+        return OK;
     }
 
     /**
