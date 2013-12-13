@@ -139,7 +139,6 @@ class NIOServer implements Runnable {
                 logger.log(Level.SEVERE, null, ex);
             } catch (JAXBException ex) {
                 Logger.getLogger(NIOServer.class.getName()).log(Level.SEVERE, null, ex);
-
             } catch (Exception ex) {
                 logger.log(Level.SEVERE, null, ex);
             }

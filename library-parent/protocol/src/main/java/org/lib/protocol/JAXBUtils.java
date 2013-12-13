@@ -42,8 +42,7 @@ public class JAXBUtils {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         marshaller.marshal(message, baos);
         byte[] buff = baos.toByteArray();
-        String xmlMessage = new String(buff, StandardCharsets.UTF_8);
-        logger.log(Level.INFO, "marshalled message: {0}", xmlMessage);
+        logger.log(Level.INFO, "marshalled message: {0}", new String(buff, StandardCharsets.UTF_8));
         dos.writeInt(buff.length);
         dos.write(buff);
         dos.flush();

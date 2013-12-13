@@ -28,7 +28,7 @@ import org.lib.protocol.JAXBUtils;
  *
  * @author danecek
  */
-public class JAXBConnection extends ConnectionService {
+public class XMLConnection extends ConnectionService {
 
     private DataInputStream dis;
     private DataOutputStream dos;
@@ -38,20 +38,20 @@ public class JAXBConnection extends ConnectionService {
     Unmarshaller unmarshaller;
     private static Class[] preloaded = {
         Reader.class,};
-    static final Logger logger = Logger.getLogger(JAXBConnection.class.getName());
+    static final Logger logger = Logger.getLogger(XMLConnection.class.getName());
 
     @Override
     public boolean isConnected() {
         return socket != null;
     }
 
-    public JAXBConnection() {
+    public XMLConnection() {
         try {
             jc = JAXBUtils.createJAXBContext();
             marshaller = jc.createMarshaller();
             unmarshaller = jc.createUnmarshaller();
         } catch (JAXBException ex) {
-            Logger.getLogger(JAXBConnection.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(XMLConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
