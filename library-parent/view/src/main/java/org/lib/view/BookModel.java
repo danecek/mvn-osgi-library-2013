@@ -34,7 +34,6 @@ public final class BookModel extends AbstractTableModel implements Refreshable {
         this(new ArrayList<Book>());
     }
     
-    
 
     public Collection<Book> getBooks(int[] rows) {
         ArrayList<Book> sbs = new ArrayList<>();
